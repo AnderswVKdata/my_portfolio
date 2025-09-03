@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_id" name="template_name">
+        <t t-call="website.layout">
+            <style>
+          header#top {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent !important;
+            border: none !important;
+          }
+
+          body, #wrapwrap {
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+
+          .s_title:first-of-type {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+          }
+        </style>
+        </t>
+    </template>
+
+</odoo>

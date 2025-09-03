@@ -1,0 +1,74 @@
+<!-- portfolio_admin_publish_view.xml-->
+<odoo>
+<template id="publish_repo" name="Publish Repository Page">
+    <t t-call="website.layout">
+        <style>
+          header#top {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent !important;
+            border: none !important;
+          }
+
+          body, #wrapwrap {
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+
+          .s_title:first-of-type {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+          }
+        </style>
+        <div id="wrap" class="oe_structure">
+
+            <!-- Header -->
+            <section class="s_title pt40 pb40 o_colored_level"
+                     style="background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
+                <div class="s_allow_columns container">
+                    <h2 class="display-3-fs text-center">Publish Repositories</h2>
+                </div>
+            </section>
+
+            <!-- Repo Cards -->
+            <section class="s_three_columns o_colored_level pt256 pb256"
+                     style="background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
+                <div class="container">
+                    <div class="row d-flex align-items-stretch">
+
+                        <t t-foreach="repos" t-as="repo">
+                            <div class="col-lg-4 pt16 pb16">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <t t-esc="repo['name']"/>
+                                        </h5>
+                                        <p class="card-text">
+                                            <t t-esc="repo['description']"/>
+                                        </p>
+                                        <p>
+                                            <a class="btn btn-custom text-black bg-o-color-1 rounded-circle mb-2"
+                                            href="#"
+                                            style="border-width: 1px; border-style: solid;">Publish</a>
+                                            <a class="btn btn-custom text-black bg-o-color-1 rounded-circle mb-2"
+                                            href="#"
+                                            style="border-width: 1px; border-style: solid;">Withdraw</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </t>
+</template>
+
+    
+
+</odoo>
