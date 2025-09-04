@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_github_repo_wizard_form" model="ir.ui.view">
+        <field name="name">portfolio.github.repo.wizard.form</field>
+        <field name="model">portfolio.github.repo.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fetch GitHub Repos">
+                <group>
+                    <field name="github_username"/>
+                </group>
+                <footer>
+                    <button string="Fetch" type="object" name="action_fetch_repos" class="btn-primary"/>
+                    <button string="Clear All" type="object" name="action_clear_repos" class="btn-danger" confirm="Are you sure you want to delete all repositories?"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+    </field>
+    </record>
+
+    <record id="action_open_github_repo_wizard" model="ir.actions.act_window">
+        <field name="name">Fetch GitHub Repositories</field>
+        <field name="res_model">portfolio.github.repo.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_github_repo_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

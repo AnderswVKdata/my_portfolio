@@ -80,11 +80,18 @@
                           <br />
                         </p>
                       </div>
-                      <div class="o_grid_item g-height-1 o_colored_level g-col-lg-4 col-lg-4"
-                        style="z-index: 4; --grid-item-padding-y: 5px; --grid-item-padding-x: 5px; text-align: center; grid-area: 14 / 5 / 15 / 9;">
-                        <a class="btn btn-custom bg-600 rounded-circle"
-                          style="border-width: 1px; border-style: dashed;"
-                          t-att-href="repo['html_url']" target="_blank">See More</a>​​ </div>
+                      <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
+                          style="z-index: 4; --grid-item-padding-y: 5px; --grid-item-padding-x: 5px; text-align: center; grid-area: 14 / 5 / 15 / 9;">
+                        <t t-if="repo['languages']">
+                          <p>
+                            <t t-foreach="repo['languages']" t-as="lang" t-key="lang">
+                              <span class="badge bg-secondary me-1" style="font-size: 0.9em;">
+                                <t t-esc="lang"/>
+                              </span>
+                            </t>
+                          </p>
+                        </t>
+                      </div>
                       <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
                         style="z-index: 5; grid-area: 12 / 8 / 14 / 12;">
                         <p>
@@ -121,14 +128,18 @@
                 </div>
 
                 <div class="s_carousel_indicators_numbers carousel-indicators align-items-center flex-shrink-1 w-auto o_we_no_overlay">
+                  <t t-set="max_indicators" t-value="5"/> <!-- max buttons to show -->
                   <t t-foreach="repos" t-as="repo" t-key="repo['name']">
-                    <button
-                      data-bs-target="#myCarousel1756706871012"
-                      aria-label="Carousel indicator"
-                      t-att-class="'active' if repo['index'] == 1 else ''"
-                      t-att-data-bs-slide-to="repo['index'] - 1"
-                      t-att-aria-current="'true' if repo['index'] == 1 else None"
-                    />
+                    <t t-if="repo['index'] &lt;= max_indicators">
+                      <button
+                        type="button"
+                        data-bs-target="#myCarousel1756706871012"
+                        aria-label="Slide #{repo['index']}"
+                        t-att-class="'active' if repo['index'] == 1 else ''"
+                        t-att-data-bs-slide-to="repo['index'] - 1"
+                        t-att-aria-current="'true' if repo['index'] == 1 else None">
+                      </button>
+                    </t>
                   </t>
                 </div>
 

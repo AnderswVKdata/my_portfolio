@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_portfolio_repository,access_portfolio_repository,model_portfolio_repository,base.group_user,1,1,1,1
+access_portfolio_repository_tag,access_portfolio_repository_tag,model_portfolio_repository_tag,base.group_user,1,1,1,1
+access_portfolio_github_repo_wizard,access_portfolio_github_repo_wizard,model_portfolio_github_repo_wizard,base.group_user,1,1,1,1

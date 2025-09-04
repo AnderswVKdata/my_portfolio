@@ -1,74 +1,46 @@
-<!-- portfolio_admin_publish_view.xml-->
 <odoo>
-<template id="publish_repo" name="Publish Repository Page">
-    <t t-call="website.layout">
-        <style>
-          header#top {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: transparent !important;
-            border: none !important;
-          }
 
-          body, #wrapwrap {
-            margin: 0 !important;
-            padding: 0 !important;
-          }
+    <!-- Backend List View -->
+    <record id="view_all_repos_list" model="ir.ui.view">
+        <field name="name">portfolio.repository.list</field>
+        <field name="model">portfolio.repository</field>
+        <field name="arch" type="xml">
+            <list>           
+                <field name="name"/>
+                <field name="url"/>
+                <field name="description"/>
+                <field name="portfolio_tag_ids" widget="many2many_tags"/>
+                <field name="published"/>
+            </list>
+        </field>
+    </record>
 
-          .s_title:first-of-type {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-          }
-        </style>
-        <div id="wrap" class="oe_structure">
+    <!-- Wizard Action (make sure this exists in another XML or include here) -->
+    <record id="action_open_github_repo_wizard" model="ir.actions.act_window">
+        <field name="name">Fetch GitHub Repositories</field>
+        <field name="res_model">portfolio.github.repo.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
 
-            <!-- Header -->
-            <section class="s_title pt40 pb40 o_colored_level"
-                     style="background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
-                <div class="s_allow_columns container">
-                    <h2 class="display-3-fs text-center">Publish Repositories</h2>
-                </div>
-            </section>
 
-            <!-- Repo Cards -->
-            <section class="s_three_columns o_colored_level pt256 pb256"
-                     style="background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
-                <div class="container">
-                    <div class="row d-flex align-items-stretch">
-
-                        <t t-foreach="repos" t-as="repo">
-                            <div class="col-lg-4 pt16 pb16">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <t t-esc="repo['name']"/>
-                                        </h5>
-                                        <p class="card-text">
-                                            <t t-esc="repo['description']"/>
-                                        </p>
-                                        <p>
-                                            <a class="btn btn-custom text-black bg-o-color-1 rounded-circle mb-2"
-                                            href="#"
-                                            style="border-width: 1px; border-style: solid;">Publish</a>
-                                            <a class="btn btn-custom text-black bg-o-color-1 rounded-circle mb-2"
-                                            href="#"
-                                            style="border-width: 1px; border-style: solid;">Withdraw</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-
+    <!-- QWeb Template for Website -->
+    <template id="publish_repo" name="Publish GitHub Repos" t-name="my_portfolio.publish_repo">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <h2>Fetched GitHub Repositories</h2>
+                <t t-foreach="repos" t-as="repo">
+                    <div class="mb-3">
+                        <h4>
+                            <a t-att-href="repo['html_url']" target="_blank">
+                                <t t-esc="repo['name']"/>
+                            </a>
+                        </h4>
+                        <p t-esc="repo['description']"/>
                     </div>
-                </div>
-            </section>
-
-        </div>
-    </t>
-</template>
-
-    
+                </t>
+            </div>
+        </t>
+    </template>
 
 </odoo>
