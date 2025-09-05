@@ -3,6 +3,7 @@
     <menuitem 
     id="menu_my_portfolio_root" 
     name="My Portfolios"
+    action="action_portfolio_repos"
     />
 
     <!-- Submenu: Repositories -->
@@ -20,14 +21,8 @@
         <field name="target">current</field>
     </record>
 
-    <!-- Menu to Open the Repositories View -->
-    <menuitem id="menu_portfolio_repos_action"
-              name="All Repositories"
-              parent="menu_portfolio_repos"
-              action="action_portfolio_repos"
-              sequence="1"/>
 
-    <!-- Wizard Launch Menu (fixing this line!) -->
+    <!-- Wizard Launch Menu -->
     <menuitem id="menu_open_fetch_wizard"
               name="Repository Wizard"
               parent="menu_portfolio_repos" 

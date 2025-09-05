@@ -48,6 +48,7 @@ class GitHubRepoWizard(models.TransientModel):
             ('portfolio_repository_ids', '=', False)
         ])
         unused_tags.unlink()
+        # Reloads page
         return {
         'type': 'ir.actions.client',
         'tag': 'reload',
