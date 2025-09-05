@@ -17,4 +17,12 @@
             </form>
     </field>
     </record>
+
+    <record id="action_open_github_repo_wizard" model="ir.actions.act_window">
+        <field name="name">Fetch GitHub Repositories</field>
+        <field name="res_model">portfolio.github.repo.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_github_repo_wizard_form"/>
+        <field name="target">new</field>
+    </record>
 </odoo>

@@ -3,7 +3,6 @@
     <menuitem 
     id="menu_my_portfolio_root" 
     name="My Portfolios"
-    action="action_portfolio_repos"
     />
 
     <!-- Submenu: Repositories -->
@@ -21,10 +20,16 @@
         <field name="target">current</field>
     </record>
 
+    <!-- Menu to Open the Repositories View -->
+    <menuitem id="menu_portfolio_repos_action"
+              name="All Repositories"
+              parent="menu_portfolio_repos"
+              action="action_portfolio_repos"
+              sequence="1"/>
 
-    <!-- Wizard Launch Menu -->
+    <!-- Wizard Launch Menu (fixing this line!) -->
     <menuitem id="menu_open_fetch_wizard"
-              name="Repository Wizard"
+              name="Fetch GitHub Repos"
               parent="menu_portfolio_repos" 
               action="action_open_github_repo_wizard"
               sequence="2"/>

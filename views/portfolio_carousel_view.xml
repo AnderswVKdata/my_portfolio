@@ -4,7 +4,6 @@
   <template id="homepage" name="Homepage" t-name="my_portfolio.homepage">
     <t t-call="website.layout">
       <t t-set="pageName" t-value="'homepage'" />
-      
       <style>
           header#top {
             position: absolute;
@@ -52,7 +51,7 @@
             <div class="o_we_shape o_web_editor_Origins_02_001" />
 
             <div class="carousel-inner">
-              <t t-foreach="repos" t-as="repo" t-key="repo['name']">
+              <t t-foreach="repos" t-as="repo">
                 <div
                   t-att-class="'s_carousel_intro_item carousel-item px-0 o_colored_level o_cc o_cc1 pb112 pt0' + (' active' if repo['index'] == 1 else '')"
                   style="position: relative; background-color: rgba(0, 0, 0, 0); background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);"
@@ -85,7 +84,7 @@
                           style="z-index: 4; --grid-item-padding-y: 5px; --grid-item-padding-x: 5px; text-align: center; grid-area: 14 / 5 / 15 / 9;">
                         <t t-if="repo.get('tags') and repo['tags']">
                           <p>
-                            <t t-foreach="repo['tags']" t-as="lang" t-key="lang">
+                            <t t-foreach="repo['tags']" t-as="lang">
                               <span class="badge bg-secondary me-1" style="font-size: 0.9em;">
                                 <t t-esc="lang"/>
                               </span>
@@ -132,7 +131,7 @@
                 </div>
 
                 <div class="s_carousel_indicators_numbers carousel-indicators align-items-center flex-shrink-1 w-auto o_we_no_overlay">
-                  <t t-foreach="repos" t-as="repo" t-key="repo['name']">
+                  <t t-foreach="repos" t-as="repo">
                     <button
                       type="button"
                       data-bs-target="#myCarousel1756706871012"

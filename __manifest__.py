@@ -16,8 +16,8 @@
     },
     'data': [
         'security/ir.model.access.csv',
-        'views/portfolio_menu.xml',
         'views/portfolio_github_wizard_view.xml',
+        'views/portfolio_menu.xml',
         'views/portfolio_carousel_view.xml',
         'views/portfolio_admin_publish_view.xml',
         
