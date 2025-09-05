@@ -13,7 +13,7 @@ class CustomWebsiteController(http.Controller):
                 'html_url': repo.url,
                 'description': repo.description,
                 'index': i,
-                'languages': [tag.name for tag in repo.portfolio_tag_ids],
+                'tags': [tag.name for tag in repo.portfolio_tag_ids],
             })
         print(f"REPOS SENT TO HOMEPAGE {repo_list}")
 

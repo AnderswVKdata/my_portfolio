@@ -35,7 +35,7 @@ class GitHubRepo(models.AbstractModel):
                     "name": repo["name"],
                     "html_url": repo["html_url"],
                     "description": readme_response.text if readme_response.status_code == 200 else "No description available.",
-                    "languages": list(languages_data.keys()),
+                    "tags": list(languages_data.keys()),
                 })
 
         except Exception as e:
@@ -43,7 +43,7 @@ class GitHubRepo(models.AbstractModel):
                 "name": "Error",
                 "html_url": "#",
                 "description": str(e),
-                "languages": []
+                "tags": []
             })
 
         return repos_data

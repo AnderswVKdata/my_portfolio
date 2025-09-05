@@ -11,7 +11,7 @@ class GitHubRepoWizard(models.TransientModel):
 
         for repo in repo_data:
             tag_ids = []
-            for lang in repo['languages']:
+            for lang in repo['tags']:
                 tag = self.env['portfolio.repository.tag'].sudo().search([('name', '=', lang)], limit=1)
                 if not tag:
                     tag = self.env['portfolio.repository.tag'].sudo().create({'name': lang})
