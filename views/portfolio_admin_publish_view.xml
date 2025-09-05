@@ -6,11 +6,11 @@
         <field name="model">portfolio.repository</field>
         <field name="arch" type="xml">
             <list>           
-                <field name="name"/>
+                <field name="name"/>             
                 <field name="url"/>
-                <field name="description"/>
-                <field name="portfolio_tag_ids" widget="many2many_tags"/>
                 <field name="published"/>
+                <field name="portfolio_tag_ids" widget="many2many_tags"/>
+                <field name="description"/>             
             </list>
         </field>
     </record>

@@ -3,7 +3,7 @@ from odoo.http import request
 
 class CustomWebsiteController(http.Controller):
 
-    @http.route('/my-portfolio', type='http', auth="public", website=True)
+    @http.route('/', type='http', auth="public", website=True)
     def homepage(self, **kw):
         repos = request.env['portfolio.repository'].sudo().search([('published', '=', True)])
         repo_list = []
