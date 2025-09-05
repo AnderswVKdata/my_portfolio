@@ -29,7 +29,7 @@
 
     <!-- Wizard Launch Menu (fixing this line!) -->
     <menuitem id="menu_open_fetch_wizard"
-              name="Fetch GitHub Repos"
+              name="Repository Wizard"
               parent="menu_portfolio_repos" 
               action="action_open_github_repo_wizard"
               sequence="2"/>

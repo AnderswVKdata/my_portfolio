@@ -34,7 +34,10 @@ class GitHubRepoWizard(models.TransientModel):
                     'published': False,
                 })
 
-        return {'type': 'ir.actions.act_window_close'}
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'reload'
+        }
 
     def action_clear_repos(self):
         # Delete all repositories
@@ -45,4 +48,8 @@ class GitHubRepoWizard(models.TransientModel):
             ('portfolio_repository_ids', '=', False)
         ])
         unused_tags.unlink()
+        return {
+        'type': 'ir.actions.client',
+        'tag': 'reload',
+        }
 
