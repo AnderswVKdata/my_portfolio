@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="aboutme_template" name="About Me Page">
+        <t t-call="website.layout">
+            <style>
+          header#top {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent !important;
+            border: none !important;
+          }
+
+          body, #wrapwrap {
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+
+          .s_title:first-of-type {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+          }
+        </style>
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_company_team pt120 o_colored_level pb0"
+                         style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
+                    <div class="o_we_shape o_web_editor_Origins_14_001"/>
+
+                    <div class="container">
+                        <div class="row s_nb_column_fixed o_grid_mode" data-row-count="13">
+
+                            <!-- Description -->
+                            <div class="o_grid_item g-col-lg-12 o_colored_level g-height-3 col-lg-12"
+                                style="grid-area: 1 / 1 / 4 / 13; z-index: 1; ">
+                                <h3 class="h1-fs m-0">
+                                    <t t-esc="aboutme.name"/>
+                                </h3>
+                                <p class="lead m-0">
+                                    <t t-esc="aboutme.title"/>
+                                </p>
+                            </div>
+
+                            <!-- Image + Address -->
+                            <div class="o_colored_level o_grid_item g-col-lg-12 g-height-9 col-lg-12"
+                                 style="z-index: 2; grid-area: 5 / 1 / 14 / 13;">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+
+                                    <!-- Image -->
+                                    <div class="col-lg-3 pb24">
+                                        <img t-if="aboutme.image"
+                                            t-att-src="'/web/image/%s/%s/image' % (aboutme._name, aboutme.id)"
+                                            class="img img-thumbnail rounded-circle"
+                                            style="max-width:250px;"/>
+                                        <p t-if="not aboutme.image">No image</p>
+                                    </div>
+
+                                    <!-- Address + Map -->
+                                    <div class="col-lg-9">
+                                        <h5>About Me</h5>
+                                        <p t-esc="aboutme.description"/>
+
+                                        <section class="s_map pt0 pb256"
+                                                 data-map-type="m"
+                                                 data-map-zoom="11"
+                                                 t-att-data-map-address="aboutme.address">
+                                            <div class="map_container">
+                                                <iframe class="s_map_embedded"
+                                                        t-att-src="'https://maps.google.com/maps?q=%s&amp;t=m&amp;z=11&amp;ie=UTF8&amp;iwloc=&amp;output=embed' % aboutme.address"
+                                                        width="100%" height="100%" frameborder="0"
+                                                        scrolling="no" marginheight="0" marginwidth="0"/>
+                                                <div class="s_map_color_filter"/>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <section class="s_references o_colored_level o_cc o_cc1 d-flex align-items-end"
+         style="min-height: 380px; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%); position: relative;"
+         data-snippet="s_references"
+         data-name="References"
+         data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Wavy/07&quot;}">
+
+    <div class="o_we_shape o_web_editor_Wavy_07"/>
+    
+    <div class="container">
+        <div class="row justify-content-center pb-5">
+            <t t-foreach="logos" t-as="logo">
+                <div class="col-lg-2 col-md-3 col-4 text-center mb-3">
+                    <div style="width:250px; height:200px; display:flex; align-items:center; justify-content:center; overflow: hidden; margin:auto;">
+                        <img t-att-src="'/web/image/portfolio.about.me.partner.logo/%s/image' % logo.id"
+                            alt="Partner Logo"
+                            style="max-width:80%; max-height:80%; object-fit:contain;"
+                            />
+                    </div>
+                </div>
+            </t>
+        </div>
+    </div>
+</section>
+
+            </div>
+        </t>
+    </template>
+</odoo>

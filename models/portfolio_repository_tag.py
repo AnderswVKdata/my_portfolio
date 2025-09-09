@@ -2,7 +2,6 @@ from odoo import fields, models
 class PortfolioRepositoryTag(models.Model):
     _name="portfolio.repository.tag"
     _description="repository tag"
-
     name = fields.Char()
     
     portfolio_repository_ids = fields.Many2many(

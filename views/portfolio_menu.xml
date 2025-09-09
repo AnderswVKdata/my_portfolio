@@ -20,11 +20,44 @@
         <field name="target">current</field>
     </record>
 
+    <!-- Action: Show About Me -->
+    <record id="action_about_me_form" model="ir.actions.act_window">
+        <field name="name">About Me</field>
+        <field name="res_model">portfolio.about.me.content</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_about_me_form"/>
+        <field name="target">current</field>
+        <field name="res_id" ref="about_me_singleton_record"/>
+    </record>
+
+    <!-- Action: Show About Me -->
+    <record id="action_partner_logo" model="ir.actions.act_window">
+        <field name="name">Partner Logo</field>
+        <field name="res_model">portfolio.about.me.partner.logo</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_partner_logo_list"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Menu to Open the partner logo View -->
+    <menuitem id="menu_partner_logo"
+              name="Partner Logo"
+              parent="menu_my_portfolio_root"
+              action="action_partner_logo"
+              sequence="1"/>
+
     <!-- Menu to Open the Repositories View -->
     <menuitem id="menu_portfolio_repos_action"
               name="All Repositories"
               parent="menu_portfolio_repos"
               action="action_portfolio_repos"
+              sequence="1"/>
+
+    <!-- Menu to Open the About Me View -->
+    <menuitem id="menu_about_me_action"
+              name="About Me"
+              parent="menu_my_portfolio_root"
+              action="action_about_me_form"
               sequence="1"/>
 
     <!-- Wizard Launch Menu (fixing this line!) -->

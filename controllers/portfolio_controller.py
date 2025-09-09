@@ -1,6 +1,7 @@
 from odoo import http
 from odoo.http import request
 
+
 class CustomWebsiteController(http.Controller):
 
     @http.route('/', type='http', auth="public", website=True)
@@ -27,3 +28,12 @@ class CustomWebsiteController(http.Controller):
         github_user = "anderswvkdata"
         repos_data = request.env['portfolio.github.data.fetch'].sudo().fetch_repos(github_user)
         return request.render(template_name, {"repos": repos_data})
+
+    @http.route('/aboutme', type='http', auth="public", website=True)
+    def aboutme(self, **kw):
+        info = request.env['portfolio.about.me.content'].sudo().get_record()
+        partner_logo = request.env['portfolio.about.me.partner.logo'].sudo().get_record()
+        return request.render("my_portfolio.aboutme_template", {
+            'aboutme': info,
+            'logos': partner_logo,
+        })

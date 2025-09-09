@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_logo_list" model="ir.ui.view">
+        <field name="name">portfolio.about.me.partner.logo.list</field>
+        <field name="model">portfolio.about.me.partner.logo</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="image"/>              
+            </list>
+        </field>
+    </record>
+
+    <record id="view_partner_logo_form" model="ir.ui.view">
+        <field name="name">portfolio.about.me.partner.logo.form</field>
+        <field name="model">portfolio.about.me.partner.logo</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field string="name" name="name"/>
+                    <field string="image" name="image"/>                 
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

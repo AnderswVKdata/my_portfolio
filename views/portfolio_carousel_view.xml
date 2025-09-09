@@ -60,15 +60,18 @@
                   <div class="container">
                     <div class="row o_grid_mode" data-row-count="14">
                       <div class="o_colored_level o_grid_item g-col-lg-6 g-height-2 col-lg-6"
-                        data-name="Block" style="z-index: 1; grid-area: 1 / 4 / 3 / 10;">
-                        <p style="text-align: center;">
-                          <span class="h5-fs">
+                          data-name="Block"
+                          style="z-index: 1; grid-area: 1 / 4 / 3 / 10;">
+                        
+                        <h2 style="text-align: center;">
+                          <span class="h1-fs">
                             <t t-esc="repo['name']" />
                           </span>
-                          <br />
-                        </p>
+                          <span style="font-size: 2.875rem;"><br/></span>
+                        </h2>
+
                         <div class="s_hr pt0 pb96" data-snippet="s_hr" data-name="Separator">
-                          <hr class="w-100 mx-auto" />
+                          <hr class="w-100 mx-auto"/>
                         </div>
                       </div>
                       <div class="o_colored_level o_grid_item g-col-lg-11 g-height-12 col-lg-11"
