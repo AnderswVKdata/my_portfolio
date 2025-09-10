@@ -10,6 +10,7 @@
     'license': 'LGPL-3',
     'assets': {
         'web.assets_frontend': [
+            'my_portfolio/static/src/js/carousel_out_of_bound_fix.js',
             'my_portfolio/static/src/js/carousel_tag_filter.js',
             
         ],
