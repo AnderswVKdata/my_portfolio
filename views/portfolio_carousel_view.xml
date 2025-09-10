@@ -1,186 +1,229 @@
-<!-- portfolio_carousel_view.xml-->
-
 <odoo>
+  <!-- MAIN PAGE -->
   <template id="homepage_v2" name="Homepage_v2" t-name="my_portfolio.homepage_v2">
     <t t-call="website.layout">
       <t t-set="pageName" t-value="'homepage'" />
+
       <style>
         header#top {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        background: transparent !important;
-        border: none !important;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          z-index: 1000;
+          background: transparent !important;
+          border: none !important;
         }
-
         body, #wrapwrap {
-        margin: 0 !important;
-        padding: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
         }
-
         .s_title:first-of-type {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
+          margin-top: 0 !important;
+          padding-top: 0 !important;
         }
       </style>
+
       <div id="wrap" class="oe_structure oe_empty">
 
-
-        <section class="s_title o_colored_level pt0 pb0" data-vcss="001" data-snippet="s_title"
-          data-name="Title"
-          style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);"
-          data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Origins/14_001&quot;,&quot;flip&quot;:[],&quot;showOnMobile&quot;:false,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;}">
-          <div class="o_we_shape o_web_editor_Origins_14_001" />
+        <!-- Welcome -->
+        <section class="s_title o_colored_level pt0 pb0" style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
+          <div class="o_we_shape o_web_editor_Origins_14_001"/>
           <div class="s_allow_columns container-fluid">
             <div class="row o_grid_mode" data-row-count="4">
-              <div class="o_grid_item g-col-lg-12 o_colored_level g-height-3 col-lg-12"
-                style="grid-area: 2 / 1 / 5 / 13; z-index: 1;">
-                <h2 class="display-3-fs" style="text-align: center; margin-top:1rem;">Welcome To My Portfolio</h2>
+              <div class="o_grid_item g-col-lg-12 col-lg-12" style="grid-area: 2 / 1 / 5 / 13; z-index: 1;">
+                <h2 class="display-3-fs" style="text-align: center; margin-top:1rem;">
+                  Welcome To My Portfolio
+                </h2>
               </div>
             </div>
           </div>
         </section>
 
-
-        <section class="s_title o_colored_level pt0 pb0"
-          data-vcss="001" data-snippet="s_title" data-name="Title"
-          style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
+        <!-- Filter Buttons -->
+        <section class="s_title o_colored_level pt0 pb0" style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
           <div class="s_allow_columns container">
             <h2 class="display-3-fs" style="text-align: center;">
-              <span class="badge bg-primary me-1 filter-btn"
-                data-filter="all"
-                style="font-size: 1.0rem; cursor: pointer;">
+              <span class="badge bg-primary me-1 filter-btn" data-filter="all" style="font-size: 1.0rem; cursor: pointer;">
                 All
               </span>
-              <!-- Loop over unique tags -->
               <t t-foreach="unique_tags" t-as="tag">
-                <span class="badge bg-secondary me-1 filter-btn"
-                  t-att-data-filter="tag"
-                  style="font-size: 1.0rem; cursor: pointer;">
-                  <t t-esc="tag" />
+                <span class="badge bg-secondary me-1 filter-btn" t-att-data-filter="tag" style="font-size: 1.0rem; cursor: pointer;">
+                  <t t-esc="tag"/>
                 </span>
               </t>
             </h2>
           </div>
         </section>
 
-        <section id="myCarousel1756706871012"
-          class="s_carousel_intro_wrapper carousel slide p-0"
-          data-snippet="s_carousel_intro"
-          data-name="Carousel Intro"
-          data-bs-ride="carousel">
-
-          <!-- Carousel inner -->
-          <div class="carousel-inner">
-            <t t-foreach="repos" t-as="repo">
-              <div
-                t-att-class="'s_carousel_intro_item carousel-item px-0 o_colored_level o_cc o_cc1 pb112 pt0' + (' active' if repo.get('index') == 1 else '')"
-                t-att-data-tags="','.join(repo.get('tags', []))"
-                style="position: relative; background-color: rgba(0,0,0,0); background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);"
-                data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Airy/05_001&quot;,&quot;flip&quot;:[],&quot;showOnMobile&quot;:false,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;,&quot;animated&quot;:&quot;true&quot;}">
-
-                <div class="o_we_shape o_web_editor_Airy_05_001 o_we_animated"></div>
-                <div class="container">
-                  <div class="row o_grid_mode" data-row-count="14">
-
-                    <!-- Title -->
-                    <div class="o_colored_level o_grid_item g-col-lg-6 g-height-2 col-lg-6"
-                      style="z-index:1; grid-area:1/4/3/10;">
-                      <h2 style="text-align:center;">
-                        <span class="h1-fs">
-                          <t t-esc="repo['name']" />
-                        </span>
-                      </h2>
-                      <div class="s_hr pt0 pb96">
-                        <hr class="w-100 mx-auto" />
-                      </div>
-                    </div>
-
-                    <!-- Description -->
-                    <div class="o_colored_level o_grid_item g-col-lg-11 g-height-12 col-lg-11"
-                      style="z-index:2; grid-area:3/1/14/12;">
-                      <p>
-                        <span class="h5-fs">
-                          <t t-esc="repo['description']" />
-                        </span>
-                      </p>
-                    </div>
-
-                    <!-- Tags -->
-                    <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
-                      style="z-index:4; grid-area:14/5/15/9; text-align:center; --grid-item-padding-y:5px; --grid-item-padding-x:5px;">
-                      <t t-if="repo.get('tags')">
-                        <p>
-                          <t t-foreach="repo['tags']" t-as="tag">
-                            <span class="badge bg-secondary me-1" style="font-size:0.9em;">
-                              <t t-esc="tag" />
-                            </span>
-                          </t>
-                        </p>
-                      </t>
-                    </div>
-
-                    <!-- GitHub Link -->
-                    <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
-                      style="z-index:5; grid-area:12/8/14/12;">
-                      <p>
-                        <a t-att-href="repo['html_url']" target="_blank">
-                          <i
-                            class="fa fa-github rounded shadow-sm ms-auto float-end bg-white-25 fa-5x"></i>
-                        </a>
-                      </p>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </t>
-          </div>
-
-          <!-- Controls + indicators -->
-          <div
-            class="s_carousel_intro_controllers container position-absolute start-50 translate-middle-x w-100 mb-md-4 o_not_editable"
-  style="bottom: 4rem;">
-            <div
-              class="s_carousel_intro_controllers_row row gap-3 gap-lg-5 justify-content-between flex-nowrap flex-row-reverse">
-
-              <!-- Prev/Next buttons -->
-              <div class="o_arrows_wrapper gap-2 w-auto p-0">
-                  <button class="carousel-control-prev o_not_editable o_we_no_overlay"
-                    aria-label="Previous" title="Previous" data-bs-target="#myCarousel1756706871012"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true" />
-                    <span class="visually-hidden o_default_snippet_text">Previous</span>
-                  </button>
-                  <button class="carousel-control-next o_not_editable o_we_no_overlay"
-                    aria-label="Next" title="Next" data-bs-target="#myCarousel1756706871012"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true" />
-                    <span class="visually-hidden o_default_snippet_text">Next</span>
-                  </button>
-                </div>
-
-                <div class="s_carousel_indicators_numbers carousel-indicators align-items-center flex-shrink-1 w-auto o_we_no_overlay"
-                      style="bottom:-3rem;">
-                  <t t-foreach="repos" t-as="repo">
-                    <button
-                      type="button"
-                      data-bs-target="#myCarousel1756706871012"
-                      aria-label="Slide #{repo['index']}"
-                      t-att-data-bs-slide-to="repo['index'] - 1"
-                      t-att-class="'active' if repo['index'] == 1 else ''"
-                      t-att-aria-current="'true' if repo['index'] == 1 else None">
-                    </button>
-                  </t>
-                </div>
-            </div>
-          </div>
+        <!-- Carousel Wrapper -->
+        <section id="carousel-wrapper">
+          <t t-call="my_portfolio.carousel_inner">
+            <t t-set="repos" t-value="repos"/>
+            <t t-set="filter_tags" t-value="[]"/>
+          </t>
         </section>
-
 
         <script type="module" src="/my_portfolio/static/src/js/carousel_out_of_bound_fix.js"></script>
       </div>
     </t>
   </template>
+
+  <!-- REUSABLE INNER CAROUSEL TEMPLATE -->
+  <template id="carousel_inner" name="Carousel Inner">
+  <section id="myCarousel1756706871012"
+           class="s_carousel_intro_wrapper carousel slide p-0"
+           data-snippet="s_carousel_intro"
+           data-name="Carousel Intro"
+           data-bs-ride="carousel">
+
+    <!-- compute how many repos will actually be shown -->
+    <t t-set="visible_count"
+       t-value="sum(1 for repo in repos if (not filter_tags or set(filter_tags).issubset(set(repo.get('tags', [])))))"/>
+
+    <!-- Carousel inner -->
+    <t t-set="visible_idx" t-value="0"/>
+    <div class="carousel-inner">
+      <!-- Fallback single active slide when nothing matches -->
+      <t t-if="visible_count == 0">
+        <div class="s_carousel_intro_item carousel-item px-0 o_colored_level o_cc o_cc1 pb112 pt0 active"
+             t-att-data-tags="''"
+             style="position: relative; background-color: rgba(0,0,0,0); background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
+
+          <div class="o_we_shape o_web_editor_Airy_05_001 o_we_animated"></div>
+          <div class="container">
+            <div class="row o_grid_mode" data-row-count="14">
+
+              <!-- "No repo" Title -->
+              <div class="o_colored_level o_grid_item g-col-lg-6 col-lg-6" style="z-index:1; grid-area:1/4/3/10;">
+                <h2 style="text-align:center;">
+                  <span class="h1-fs">No repositories found</span>
+                </h2>
+                <div class="s_hr pt0 pb96"><hr class="w-100 mx-auto"/></div>
+              </div>
+
+              <!-- "No repo" Description -->
+              <div class="o_colored_level o_grid_item g-col-lg-11 col-lg-11" style="z-index:2; grid-area:3/1/14/12;">
+                <p><span class="h5-fs">No repositories match the selected filters. Try adjusting your filter options.</span></p>
+              </div>
+
+              <!-- empty tags area (keeps layout) -->
+              <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
+                   style="z-index:4; grid-area:14/5/15/9; text-align:center;">
+              </div>
+
+              <!-- empty github area (keeps layout) -->
+              <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
+                   style="z-index:5; grid-area:12/8/14/12;">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </t>
+
+      <!-- Normal rendering when we have matches -->
+      <t t-else="">
+        <t t-foreach="repos" t-as="repo">
+          <!-- Only render items that match the filter condition -->
+          <t t-if="not filter_tags or set(filter_tags).issubset(set(repo.get('tags', [])))">
+            <div t-att-class="'s_carousel_intro_item carousel-item px-0 o_colored_level o_cc o_cc1 pb112 pt0' + (' active' if visible_idx == 0 else '')"
+                 t-att-data-tags="','.join(repo.get('tags', []))"
+                 style="position: relative; background-color: rgba(0,0,0,0); background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
+
+              <div class="o_we_shape o_web_editor_Airy_05_001 o_we_animated"></div>
+              <div class="container">
+                <div class="row o_grid_mode" data-row-count="14">
+
+                  <!-- Title -->
+                  <div class="o_colored_level o_grid_item g-col-lg-6 col-lg-6" style="z-index:1; grid-area:1/4/3/10;">
+                    <h2 style="text-align:center;">
+                      <span class="h1-fs"><t t-esc="repo['name']"/></span>
+                    </h2>
+                    <div class="s_hr pt0 pb96"><hr class="w-100 mx-auto"/></div>
+                  </div>
+
+                  <!-- Description -->
+                  <div class="o_colored_level o_grid_item g-col-lg-11 col-lg-11" style="z-index:2; grid-area:3/1/14/12;">
+                    <p><span class="h5-fs"><t t-esc="repo['description']"/></span></p>
+                  </div>
+
+                  <!-- Tags -->
+                  <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
+                       style="z-index:4; grid-area:14/5/15/9; text-align:center;">
+                    <t t-if="repo.get('tags')">
+                      <p>
+                        <t t-foreach="repo['tags']" t-as="tag">
+                          <span class="badge bg-secondary me-1" style="font-size:0.9em;">
+                            <t t-esc="tag"/>
+                          </span>
+                        </t>
+                      </p>
+                    </t>
+                  </div>
+
+                  <!-- GitHub Link -->
+                  <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
+                       style="z-index:5; grid-area:12/8/14/12;">
+                    <p>
+                      <a t-att-href="repo['html_url']" target="_blank">
+                        <i class="fa fa-github rounded shadow-sm ms-auto float-end bg-white-25 fa-5x"></i>
+                      </a>
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- increment visible index only when we actually output an item -->
+            <t t-set="visible_idx" t-value="visible_idx + 1"/>
+          </t>
+        </t>
+      </t>
+    </div>
+
+    <!-- Controls + indicators -->
+    <div class="s_carousel_intro_controllers container position-absolute start-50 translate-middle-x w-100 mb-md-4 o_not_editable" style="bottom: 4rem;">
+      <div class="s_carousel_intro_controllers_row row gap-3 gap-lg-5 justify-content-between flex-nowrap flex-row-reverse">
+
+        <!-- Prev/Next buttons (data-bs-target will be updated by JS if ID is generated) -->
+        <div class="o_arrows_wrapper gap-2 w-auto p-0">
+          <button class="carousel-control-prev" data-bs-target="#myCarousel1756706871012" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" data-bs-target="#myCarousel1756706871012" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- Indicators: build using the same visible_count so they always match items -->
+        <div class="s_carousel_indicators_numbers carousel-indicators align-items-center flex-shrink-1 w-auto o_we_no_overlay" style="bottom:-3rem;">
+          <!-- single active indicator when no items -->
+          <t t-if="visible_count == 0">
+            <button type="button" data-bs-target="#myCarousel1756706871012" data-bs-slide-to="0" class="active" aria-current="true"></button>
+          </t>
+          <!-- normal indicators when there are items -->
+          <t t-else="">
+            <t t-set="ind_idx" t-value="0"/>
+            <t t-foreach="repos" t-as="repo">
+              <t t-if="not filter_tags or set(filter_tags).issubset(set(repo.get('tags', [])))">
+                <button type="button"
+                        data-bs-target="#myCarousel1756706871012"
+                        t-att-data-bs-slide-to="ind_idx"
+                        t-att-class="'active' if ind_idx == 0 else ''"
+                        t-att-aria-current="'true' if ind_idx == 0 else None">
+                </button>
+                <t t-set="ind_idx" t-value="ind_idx + 1"/>
+              </t>
+            </t>
+          </t>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</template>
+
+
 </odoo>

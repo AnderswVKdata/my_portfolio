@@ -82,9 +82,9 @@
                     </div>
                 </section>
 
-                <section class="s_cards_soft o_colored_level o_cc o_cc1 pt128 pb256"
+                <section class="s_cards_soft o_colored_level o_cc o_cc1  pb256"
                     data-snippet="s_cards_soft"
-                    style="position: relative; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
+                    style="position: relative; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%); padding-top: 250px;">
 
                     <style>
                         .s_cards_soft .row.s_nb_column_fixed.o_grid_mode {

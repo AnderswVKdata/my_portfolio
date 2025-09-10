@@ -6,38 +6,30 @@ class CustomWebsiteController(http.Controller):
 
     @http.route('/my-portfolio', type='http', auth="public", website=True)
     def homepage(self, **kw):
-        repos = request.env['portfolio.repository'].sudo().search([('published', '=', True)])
-        repo_list = []
-        all_tags = set()
-
-        for i, repo in enumerate(repos, 1):
-            tags = [tag.name for tag in repo.portfolio_tag_ids]
-            repo_list.append({
-                'name': repo.name,
-                'html_url': repo.url,
-                'description': repo.description,
-                'index': i,
-                'tags': tags,
-            })
-            all_tags.update(tags)
-
-        # Convert set → list for QWeb
-        unique_tags = list(all_tags)
-
+        repo_list, unique_tags = self._get_repos_and_tags()
         return request.render("my_portfolio.homepage_v2", {
             "repos": repo_list,
             "unique_tags": unique_tags,
         })
 
-    @http.route('/publish-repos', type='http', auth="public", website=True)
-    def publish_repo(self, **kw):
-        return self._render_repos("my_portfolio.publish_repo")
+    # AJAX filter route (returns only the carousel inner template)
+    @http.route('/portfolio/filter', type='json', auth="public", website=True)
+    def filter_repos(self, tags=None, **kw):
+        repo_list, _ = self._get_repos_and_tags()
 
-    def _render_repos(self, template_name):
-        github_user = "anderswvkdata"
-        repos_data = request.env['portfolio.github.data.fetch'].sudo().fetch_repos(github_user)
-        return request.render(template_name, {"repos": repos_data})
+        # Apply filter if tags selected
+        if tags:
+            filtered = []
+            for repo in repo_list:
+                if set(tags).issubset(set(repo.get("tags", []))):
+                    filtered.append(repo)
+            repo_list = filtered
 
+        return request.env['ir.ui.view']._render_template(
+            "my_portfolio.carousel_inner",
+            {"repos": repo_list}
+        )
+  
     @http.route('/aboutme', type='http', auth="public", website=True)
     def aboutme(self, **kw):
         info = request.env['portfolio.about.me.content'].sudo().get_record()
@@ -48,3 +40,25 @@ class CustomWebsiteController(http.Controller):
             'logos': partner_logo,
             'cards': experience_card,
         })
+    
+    def _get_repos_and_tags(self):
+        repos = request.env['portfolio.repository'].sudo().search([('published', '=', True)])
+        repo_list = []
+        all_tags = set()
+
+        for i, repo in enumerate(repos, 1):
+            tag_names = [tag.name for tag in repo.portfolio_tag_ids]
+            repo_list.append({
+                'name': repo.name,
+                'html_url': repo.url,
+                'description': repo.description,
+                'index': i,
+                'tags': tag_names,
+            })
+            all_tags.update(tag_names)
+
+        return repo_list, list(all_tags)
+    
+    def _render_repos(self, template_name):
+        repos_data = request.env['portfolio.repository'].sudo().search([])
+        return request.render(template_name, {"repos": repos_data})
