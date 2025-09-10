@@ -39,6 +39,38 @@
         <field name="target">current</field>
     </record>
 
+    <!-- Action: Show Language Card Tag-->
+    <record id="action_language_tag" model="ir.actions.act_window">
+        <field name="name">Language Card Tag</field>
+        <field name="res_model">portfolio.about.me.card.tag</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_language_card_tag_list"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Action: Show experience card-->
+    <record id="action_experience_card" model="ir.actions.act_window">
+        <field name="name">Experience Card</field>
+        <field name="res_model">portfolio.about.me.experience.card</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_experience_card_list"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Menu to experience card-->
+    <menuitem id="menu_experience_card"
+              name="Experience Card"
+              parent="menu_my_portfolio_root"
+              action="action_experience_card"
+              sequence="1"/>
+
+    <!-- Menu to Language Card Tag View -->
+    <menuitem id="menu_language_card_tag"
+              name="Language Tag"
+              parent="menu_my_portfolio_root"
+              action="action_language_tag"
+              sequence="1"/>
+
     <!-- Menu to Open the partner logo View -->
     <menuitem id="menu_partner_logo"
               name="Partner Logo"

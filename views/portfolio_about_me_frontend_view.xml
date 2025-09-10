@@ -3,47 +3,49 @@
     <template id="aboutme_template" name="About Me Page">
         <t t-call="website.layout">
             <style>
-          header#top {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: transparent !important;
-            border: none !important;
-          }
+                header#top {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                background: transparent !important;
+                border: none !important;
+                }
 
-          body, #wrapwrap {
-            margin: 0 !important;
-            padding: 0 !important;
-          }
+                body, #wrapwrap {
+                margin: 0 !important;
+                padding: 0 !important;
+                }
 
-          .s_title:first-of-type {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-          }
-        </style>
+                .s_title:first-of-type {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+                }
+            </style>
             <div id="wrap" class="oe_structure oe_empty">
                 <section class="s_company_team pt120 o_colored_level pb0"
-                         style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
-                    <div class="o_we_shape o_web_editor_Origins_14_001"/>
+                    style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
+                    <div class="o_we_shape o_web_editor_Origins_14_001" />
 
                     <div class="container">
                         <div class="row s_nb_column_fixed o_grid_mode" data-row-count="13">
 
                             <!-- Description -->
-                            <div class="o_grid_item g-col-lg-12 o_colored_level g-height-3 col-lg-12"
+                            <div
+                                class="o_grid_item g-col-lg-12 o_colored_level g-height-3 col-lg-12"
                                 style="grid-area: 1 / 1 / 4 / 13; z-index: 1; ">
                                 <h3 class="h1-fs m-0">
-                                    <t t-esc="aboutme.name"/>
+                                    <t t-esc="aboutme.name" />
                                 </h3>
                                 <p class="lead m-0">
-                                    <t t-esc="aboutme.title"/>
+                                    <t t-esc="aboutme.title" />
                                 </p>
                             </div>
 
                             <!-- Image + Address -->
-                            <div class="o_colored_level o_grid_item g-col-lg-12 g-height-9 col-lg-12"
-                                 style="z-index: 2; grid-area: 5 / 1 / 14 / 13;">
+                            <div
+                                class="o_colored_level o_grid_item g-col-lg-12 g-height-9 col-lg-12"
+                                style="z-index: 2; grid-area: 5 / 1 / 14 / 13;">
                                 <div class="row s_col_no_resize s_col_no_bgcolor">
 
                                     <!-- Image -->
@@ -51,25 +53,25 @@
                                         <img t-if="aboutme.image"
                                             t-att-src="'/web/image/%s/%s/image' % (aboutme._name, aboutme.id)"
                                             class="img img-thumbnail rounded-circle"
-                                            style="max-width:250px;"/>
+                                            style="max-width:250px;" />
                                         <p t-if="not aboutme.image">No image</p>
                                     </div>
 
                                     <!-- Address + Map -->
                                     <div class="col-lg-9">
                                         <h5>About Me</h5>
-                                        <p t-esc="aboutme.description"/>
+                                        <p t-esc="aboutme.description" />
 
                                         <section class="s_map pt0 pb256"
-                                                 data-map-type="m"
-                                                 data-map-zoom="11"
-                                                 t-att-data-map-address="aboutme.address">
+                                            data-map-type="m"
+                                            data-map-zoom="11"
+                                            t-att-data-map-address="aboutme.address">
                                             <div class="map_container">
                                                 <iframe class="s_map_embedded"
-                                                        t-att-src="'https://maps.google.com/maps?q=%s&amp;t=m&amp;z=11&amp;ie=UTF8&amp;iwloc=&amp;output=embed' % aboutme.address"
-                                                        width="100%" height="100%" frameborder="0"
-                                                        scrolling="no" marginheight="0" marginwidth="0"/>
-                                                <div class="s_map_color_filter"/>
+                                                    t-att-src="'https://maps.google.com/maps?q=%s&amp;t=m&amp;z=11&amp;ie=UTF8&amp;iwloc=&amp;output=embed' % aboutme.address"
+                                                    width="100%" height="100%" frameborder="0"
+                                                    scrolling="no" marginheight="0" marginwidth="0" />
+                                                <div class="s_map_color_filter" />
                                             </div>
                                         </section>
                                     </div>
@@ -79,29 +81,130 @@
                         </div>
                     </div>
                 </section>
-                <section class="s_references o_colored_level o_cc o_cc1 d-flex align-items-end"
-         style="min-height: 380px; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%); position: relative;"
-         data-snippet="s_references"
-         data-name="References"
-         data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Wavy/07&quot;}">
 
-    <div class="o_we_shape o_web_editor_Wavy_07"/>
-    
-    <div class="container">
-        <div class="row justify-content-center pb-5">
-            <t t-foreach="logos" t-as="logo">
-                <div class="col-lg-2 col-md-3 col-4 text-center mb-3">
-                    <div style="width:250px; height:200px; display:flex; align-items:center; justify-content:center; overflow: hidden; margin:auto;">
-                        <img t-att-src="'/web/image/portfolio.about.me.partner.logo/%s/image' % logo.id"
-                            alt="Partner Logo"
-                            style="max-width:80%; max-height:80%; object-fit:contain;"
-                            />
+                <section class="s_cards_soft o_colored_level o_cc o_cc1 pt128 pb256"
+                    data-snippet="s_cards_soft"
+                    style="position: relative; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
+
+                    <style>
+                        .s_cards_soft .row.s_nb_column_fixed.o_grid_mode {
+                            display: grid;
+                            grid-template-columns: repeat(12, 1fr);
+                            grid-auto-rows: min-content;
+                        }
+                        .s_cards_soft .o_grid_item {
+                            position: relative !important;
+                        }
+                    </style>
+
+                    <div class="o_we_shape o_web_editor_Origins_16"></div>
+                    <div class="container">
+                        <div class="row s_nb_column_fixed o_grid_mode" data-row-count="9">
+                            <div class="o_grid_item g-col-lg-12 g-height-3 col-lg-12"
+                                style="grid-area: 1 / 1 / 4 / 13; z-index: 1;">
+                                <h2 style="text-align: center;">Experience</h2>
+                                <p class="lead" style="text-align: center;">
+                                    <br />
+                                </p>
+                            </div>
+
+                            <t t-set="cols_per_row" t-value="4" />    <!-- how many cards per row -->
+                            <t t-set="col_span" t-value="3" />        <!-- how many grid columns each card
+                            spans (3 -> 1,4,7,10) -->
+                            <t t-set="row_span" t-value="8" />        <!-- how many grid rows each card
+                            spans (matches g-height-8) -->
+
+                            <!-- dynamic loop: enumerate(cards) so we have index -->
+                            <t t-foreach="enumerate(cards)" t-as="pair">
+                                <!-- pair[0] = index, pair[1] = card -->
+                                <t t-set="idx" t-value="pair[0]" />
+                                <t t-set="card" t-value="pair[1]" />
+
+                                <!-- compute start col, end col, start row, end row -->
+                                <t t-set="col_start" t-value="1 + (idx % cols_per_row) * col_span" />
+                                <t t-set="col_end" t-value="col_start + col_span" />
+                                <t t-set="row_start" t-value="2 + (idx // cols_per_row) * row_span" />
+                                <t t-set="row_end" t-value="row_start + row_span" />
+
+                                <!-- output the grid item with dynamic grid-area inline -->
+                                <div class="o_grid_item g-col-lg-3 g-height-8 col-lg-3"
+                                    t-att-style="'z-index: 0; grid-area: %s / %s / %s / %s;' % (row_start, col_start, row_end, col_end)">
+                                    <div
+                                        class="s_card card o_colored_level o_cc o_cc2 border shadow o_card_img_top"
+                                        style="width: 280px;
+                   background-color: rgba(0, 0, 0, 0);
+                   background-image: linear-gradient(135deg, rgb(203, 94, 238) 0%, rgb(75, 225, 236) 100%);
+                   border-width: 0px !important;
+                   box-shadow: rgb(0, 0, 255) 0px 8px 16px 0px !important;">
+                                        <figure class="o_card_img_wrapper ratio mb-0 ratio-4x3">
+                                            <img class="o_card_img object-fit-cover card-img-top"
+                                                t-att-src="'/web/image/portfolio.about.me.experience.card/%s/image' % card.id"
+                                                alt="Experience Image" />
+                                        </figure>
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <span style="font-size: 1rem;">
+                                                    <t t-esc="card.title" />
+                                                </span>
+                                            </h5>
+                                            <p>
+                                                <span style="font-size: 0.875rem;">
+                                                    <t t-esc="card.description" />
+                                                </span>
+                                            </p>
+                                            <div class="mt-2">
+                                                <t t-foreach="card.card_tag_ids" t-as="tag">
+                                                    <span class="badge bg-primary me-1">
+                                                        <t t-esc="tag.name" />
+                                                    </span>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
                     </div>
-                </div>
-            </t>
-        </div>
-    </div>
-</section>
+                </section>
+
+
+                <section class="s_references o_colored_level o_cc o_cc1 d-flex align-items-end"
+                    style="min-height: 380px; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%); position: relative;"
+                    data-snippet="s_references"
+                    data-name="References"
+                    data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Wavy/07&quot;}">
+
+                    <div class="o_we_shape o_web_editor_Wavy_07"></div>
+
+                    <div class="container">
+
+                        <!-- Partners title -->
+                        <div class="row">
+                            <div class="col-12 text-center mb-4" style="padding-left: 80%;">
+                                <h5>
+                                    <span class="h1-fs">Partners</span>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <!-- Logos -->
+                        <div class="row justify-content-center pb-5">
+                            <t t-foreach="logos" t-as="logo">
+                                <div class="col-lg-2 col-md-3 col-4 text-center mb-3">
+                                    <div
+                                        style="width:250px; height:200px; display:flex; align-items:center; justify-content:center; overflow: hidden; margin:auto;">
+                                        <img
+                                            t-att-src="'/web/image/portfolio.about.me.partner.logo/%s/image' % logo.id"
+                                            alt="Partner Logo"
+                                            style="max-width:80%; max-height:80%; object-fit:contain;" />
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+
+                    </div>
+                </section>
 
             </div>
         </t>

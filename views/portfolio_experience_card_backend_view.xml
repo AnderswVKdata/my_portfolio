@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+       <record id="view_experience_card_list" model="ir.ui.view">
+        <field name="name">portfolio.about.me.experience.card.list</field>
+        <field name="model">portfolio.about.me.experience.card</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="title"/>
+                <field name="description"/>
+                <field name="image"/>
+                <field name="card_tag_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="view_experience_card_form" model="ir.ui.view">
+        <field name="name">portfolio.about.me.experience.card.form</field>
+        <field name="model">portfolio.about.me.experience.card</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="description"/>
+                        <field name="image"/>
+                        <field name="card_tag_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    
+
+</odoo>

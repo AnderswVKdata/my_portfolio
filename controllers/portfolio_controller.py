@@ -4,7 +4,7 @@ from odoo.http import request
 
 class CustomWebsiteController(http.Controller):
 
-    @http.route('/', type='http', auth="public", website=True)
+    @http.route('/my-portfolio', type='http', auth="public", website=True)
     def homepage(self, **kw):
         repos = request.env['portfolio.repository'].sudo().search([('published', '=', True)])
         repo_list = []
@@ -33,7 +33,9 @@ class CustomWebsiteController(http.Controller):
     def aboutme(self, **kw):
         info = request.env['portfolio.about.me.content'].sudo().get_record()
         partner_logo = request.env['portfolio.about.me.partner.logo'].sudo().get_record()
+        experience_card = request.env['portfolio.about.me.experience.card'].sudo().get_record()
         return request.render("my_portfolio.aboutme_template", {
             'aboutme': info,
             'logos': partner_logo,
+            'cards': experience_card,
         })

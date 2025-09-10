@@ -4,3 +4,5 @@ from . import portfolio_repository
 from . import portfolio_github_repo_wizard
 from . import portfolio_about_me_content
 from . import portfolio_about_me_partner_logo
+from . import portfolio_about_me_experience_card
+from . import portfolio_about_me_card_tag
