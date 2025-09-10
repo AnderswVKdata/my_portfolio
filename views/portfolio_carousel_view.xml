@@ -1,32 +1,31 @@
 <!-- portfolio_carousel_view.xml-->
 
 <odoo>
-  <template id="homepage" name="Homepage" t-name="my_portfolio.homepage">
+  <template id="homepage_v2" name="Homepage_v2" t-name="my_portfolio.homepage_v2">
     <t t-call="website.layout">
       <t t-set="pageName" t-value="'homepage'" />
       <style>
-          header#top {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: transparent !important;
-            border: none !important;
-          }
+        header#top {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: transparent !important;
+        border: none !important;
+        }
 
-          body, #wrapwrap {
-            margin: 0 !important;
-            padding: 0 !important;
-          }
+        body, #wrapwrap {
+        margin: 0 !important;
+        padding: 0 !important;
+        }
 
-          .s_title:first-of-type {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-          }
-        </style>
+        .s_title:first-of-type {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        }
+      </style>
       <div id="wrap" class="oe_structure oe_empty">
-        
-    
+
 
         <section class="s_title o_colored_level pt0 pb0" data-vcss="001" data-snippet="s_title"
           data-name="Title"
@@ -37,89 +36,117 @@
             <div class="row o_grid_mode" data-row-count="4">
               <div class="o_grid_item g-col-lg-12 o_colored_level g-height-3 col-lg-12"
                 style="grid-area: 2 / 1 / 5 / 13; z-index: 1;">
-                <h2 class="display-3-fs" style="text-align: center;">Welcome To My Portfolio</h2>
+                <h2 class="display-3-fs" style="text-align: center; margin-top:1rem;">Welcome To My Portfolio</h2>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="s_carousel_intro_wrapper p-0" data-snippet="s_carousel_intro" data-name="Carousel Intro">
-          <div
-            class="s_carousel_intro s_carousel_default carousel slide o_colored_level pointer-event carousel-dark"
-            data-bs-ride="true" data-bs-interval="10000" id="myCarousel1756706871012"
-            style="position: relative;"
-            data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Origins/02_001&quot;,&quot;flip&quot;:[],&quot;showOnMobile&quot;:false,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;}">
-            <div class="o_we_shape o_web_editor_Origins_02_001" />
 
-            <div class="carousel-inner">
-              <t t-foreach="repos" t-as="repo">
-                <div
-                  t-att-class="'s_carousel_intro_item carousel-item px-0 o_colored_level o_cc o_cc1 pb112 pt0' + (' active' if repo['index'] == 1 else '')"
-                  style="position: relative; background-color: rgba(0, 0, 0, 0); background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);"
-                  data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Airy/05_001&quot;,&quot;flip&quot;:[],&quot;showOnMobile&quot;:false,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;,&quot;animated&quot;:&quot;true&quot;}">
-                  <div class="o_we_shape o_web_editor_Airy_05_001 o_we_animated"></div>
-                  <div class="container">
-                    <div class="row o_grid_mode" data-row-count="14">
-                      <div class="o_colored_level o_grid_item g-col-lg-6 g-height-2 col-lg-6"
-                          data-name="Block"
-                          style="z-index: 1; grid-area: 1 / 4 / 3 / 10;">
-                        
-                        <h2 style="text-align: center;">
-                          <span class="h1-fs">
-                            <t t-esc="repo['name']" />
-                          </span>
-                          <span style="font-size: 2.875rem;"><br/></span>
-                        </h2>
+        <section class="s_title o_colored_level pt0 pb0"
+          data-vcss="001" data-snippet="s_title" data-name="Title"
+          style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
+          <div class="s_allow_columns container">
+            <h2 class="display-3-fs" style="text-align: center;">
+              <span class="badge bg-primary me-1 filter-btn"
+                data-filter="all"
+                style="font-size: 1.0rem; cursor: pointer;">
+                All
+              </span>
+              <!-- Loop over unique tags -->
+              <t t-foreach="unique_tags" t-as="tag">
+                <span class="badge bg-secondary me-1 filter-btn"
+                  t-att-data-filter="tag"
+                  style="font-size: 1.0rem; cursor: pointer;">
+                  <t t-esc="tag" />
+                </span>
+              </t>
+            </h2>
+          </div>
+        </section>
 
-                        <div class="s_hr pt0 pb96" data-snippet="s_hr" data-name="Separator">
-                          <hr class="w-100 mx-auto"/>
-                        </div>
-                      </div>
-                      <div class="o_colored_level o_grid_item g-col-lg-11 g-height-12 col-lg-11"
-                        data-name="Block" style="z-index: 2; grid-area: 2 / 1 / 14 / 12;">
-                        <p>
-                          <span class="h5-fs">
-                            <t t-esc="repo['description']" />
-                          </span>
-                          <br />
-                        </p>
-                      </div>
-                      <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
-                          style="z-index: 4; --grid-item-padding-y: 5px; --grid-item-padding-x: 5px; text-align: center; grid-area: 14 / 5 / 15 / 9;">
-                        <t t-if="repo.get('tags') and repo['tags']">
-                          <p>
-                            <t t-foreach="repo['tags']" t-as="lang">
-                              <span class="badge bg-secondary me-1" style="font-size: 0.9em;">
-                                <t t-esc="lang"/>
-                              </span>
-                            </t>
-                          </p>
-                        </t>
-                        <t t-else="">
-                          
-                        </t>
-                      </div>
-                      <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
-                        style="z-index: 5; grid-area: 12 / 8 / 14 / 12;">
-                        <p>
-                          <a target="_blank" t-att-href="repo['html_url']">
-                            <i
-                              class="fa fa-github rounded shadow-sm ms-auto float-end bg-white-25 fa-5x"></i>
-                          </a>
-                        </p>
+        <section id="myCarousel1756706871012"
+          class="s_carousel_intro_wrapper carousel slide p-0"
+          data-snippet="s_carousel_intro"
+          data-name="Carousel Intro"
+          data-bs-ride="carousel">
+
+          <!-- Carousel inner -->
+          <div class="carousel-inner">
+            <t t-foreach="repos" t-as="repo">
+              <div
+                t-att-class="'s_carousel_intro_item carousel-item px-0 o_colored_level o_cc o_cc1 pb112 pt0' + (' active' if repo.get('index') == 1 else '')"
+                t-att-data-tags="','.join(repo.get('tags', []))"
+                style="position: relative; background-color: rgba(0,0,0,0); background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);"
+                data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Airy/05_001&quot;,&quot;flip&quot;:[],&quot;showOnMobile&quot;:false,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;,&quot;animated&quot;:&quot;true&quot;}">
+
+                <div class="o_we_shape o_web_editor_Airy_05_001 o_we_animated"></div>
+                <div class="container">
+                  <div class="row o_grid_mode" data-row-count="14">
+
+                    <!-- Title -->
+                    <div class="o_colored_level o_grid_item g-col-lg-6 g-height-2 col-lg-6"
+                      style="z-index:1; grid-area:1/4/3/10;">
+                      <h2 style="text-align:center;">
+                        <span class="h1-fs">
+                          <t t-esc="repo['name']" />
+                        </span>
+                      </h2>
+                      <div class="s_hr pt0 pb96">
+                        <hr class="w-100 mx-auto" />
                       </div>
                     </div>
+
+                    <!-- Description -->
+                    <div class="o_colored_level o_grid_item g-col-lg-11 g-height-12 col-lg-11"
+                      style="z-index:2; grid-area:3/1/14/12;">
+                      <p>
+                        <span class="h5-fs">
+                          <t t-esc="repo['description']" />
+                        </span>
+                      </p>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
+                      style="z-index:4; grid-area:14/5/15/9; text-align:center; --grid-item-padding-y:5px; --grid-item-padding-x:5px;">
+                      <t t-if="repo.get('tags')">
+                        <p>
+                          <t t-foreach="repo['tags']" t-as="tag">
+                            <span class="badge bg-secondary me-1" style="font-size:0.9em;">
+                              <t t-esc="tag" />
+                            </span>
+                          </t>
+                        </p>
+                      </t>
+                    </div>
+
+                    <!-- GitHub Link -->
+                    <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
+                      style="z-index:5; grid-area:12/8/14/12;">
+                      <p>
+                        <a t-att-href="repo['html_url']" target="_blank">
+                          <i
+                            class="fa fa-github rounded shadow-sm ms-auto float-end bg-white-25 fa-5x"></i>
+                        </a>
+                      </p>
+                    </div>
+
                   </div>
                 </div>
-              </t>
-            </div>
+              </div>
+            </t>
+          </div>
 
+          <!-- Controls + indicators -->
+          <div
+            class="s_carousel_intro_controllers container position-absolute start-50 translate-middle-x w-100 mb-md-4 o_not_editable"
+  style="bottom: 4rem;">
             <div
-              class="s_carousel_intro_controllers container position-absolute start-50 bottom-0 translate-middle-x w-100 mb-md-4 o_not_editable">
-              <div
-                class="s_carousel_intro_controllers_row row gap-3 gap-lg-5 justify-content-between flex-nowrap flex-row-reverse">
+              class="s_carousel_intro_controllers_row row gap-3 gap-lg-5 justify-content-between flex-nowrap flex-row-reverse">
 
-                <div class="o_arrows_wrapper gap-2 w-auto p-0">
+              <!-- Prev/Next buttons -->
+              <div class="o_arrows_wrapper gap-2 w-auto p-0">
                   <button class="carousel-control-prev o_not_editable o_we_no_overlay"
                     aria-label="Previous" title="Previous" data-bs-target="#myCarousel1756706871012"
                     data-bs-slide="prev">
@@ -134,7 +161,8 @@
                   </button>
                 </div>
 
-                <div class="s_carousel_indicators_numbers carousel-indicators align-items-center flex-shrink-1 w-auto o_we_no_overlay">
+                <div class="s_carousel_indicators_numbers carousel-indicators align-items-center flex-shrink-1 w-auto o_we_no_overlay"
+                      style="bottom:-3rem;">
                   <t t-foreach="repos" t-as="repo">
                     <button
                       type="button"
@@ -146,11 +174,10 @@
                     </button>
                   </t>
                 </div>
-
-              </div>
             </div>
           </div>
         </section>
+
 
         <script type="module" src="/my_portfolio/static/src/js/carousel_out_of_bound_fix.js"></script>
       </div>

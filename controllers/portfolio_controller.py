@@ -8,17 +8,26 @@ class CustomWebsiteController(http.Controller):
     def homepage(self, **kw):
         repos = request.env['portfolio.repository'].sudo().search([('published', '=', True)])
         repo_list = []
+        all_tags = set()
+
         for i, repo in enumerate(repos, 1):
+            tags = [tag.name for tag in repo.portfolio_tag_ids]
             repo_list.append({
                 'name': repo.name,
                 'html_url': repo.url,
                 'description': repo.description,
                 'index': i,
-                'tags': [tag.name for tag in repo.portfolio_tag_ids],
+                'tags': tags,
             })
-        print(f"REPOS SENT TO HOMEPAGE {repo_list}")
+            all_tags.update(tags)
 
-        return request.render("my_portfolio.homepage", {"repos": repo_list})
+        # Convert set → list for QWeb
+        unique_tags = list(all_tags)
+
+        return request.render("my_portfolio.homepage_v2", {
+            "repos": repo_list,
+            "unique_tags": unique_tags,
+        })
 
     @http.route('/publish-repos', type='http', auth="public", website=True)
     def publish_repo(self, **kw):
