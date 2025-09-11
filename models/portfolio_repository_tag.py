@@ -11,7 +11,7 @@ class PortfolioRepositoryTag(models.Model):
         "repository_id",   # related model's column (repository)
         string="Repositories"
     )
-
+    # Ensures unique tags in database, comment out as i dont know if works
     #_sql_constraints = [
     #    ('unique_tag_name', 'unique(name)', 'Tag name must be unique!'),
     #]

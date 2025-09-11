@@ -11,8 +11,7 @@
     'assets': {
         'web.assets_frontend': [
             'my_portfolio/static/src/js/carousel_out_of_bound_fix.js',
-            'my_portfolio/static/src/js/carousel_tag_filter.js',
-            
+            'my_portfolio/static/src/js/carousel_tag_filter.js',            
         ],
     },
     'data': [
@@ -25,8 +24,6 @@
         'views/portfolio_menu.xml',
         'views/portfolio_carousel_view.xml',
         'views/portfolio_publish_repo_view.xml', 
-        'views/portfolio_about_me_frontend_view.xml',
-        
-    ],
-    
+        'views/portfolio_about_me_frontend_view.xml',       
+    ],  
 }

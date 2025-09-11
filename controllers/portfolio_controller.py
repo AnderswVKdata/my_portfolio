@@ -3,7 +3,7 @@ from odoo.http import request
 
 
 class CustomWebsiteController(http.Controller):
-
+    
     @http.route('/my-portfolio', type='http', auth="public", website=True)
     def homepage(self, **kw):
         repo_list, unique_tags = self._get_repos_and_tags()
@@ -41,6 +41,7 @@ class CustomWebsiteController(http.Controller):
             'cards': experience_card,
         })
     
+    #Fetches published repos
     def _get_repos_and_tags(self):
         repos = request.env['portfolio.repository'].sudo().search([('published', '=', True)])
         repo_list = []
@@ -59,6 +60,4 @@ class CustomWebsiteController(http.Controller):
 
         return repo_list, list(all_tags)
     
-    def _render_repos(self, template_name):
-        repos_data = request.env['portfolio.repository'].sudo().search([])
-        return request.render(template_name, {"repos": repos_data})
+
