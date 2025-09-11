@@ -103,8 +103,7 @@ publicWidget.registry.CarouselTagFilter = publicWidget.Widget.extend({
             try {
                 if (window.bootstrap && window.bootstrap.Carousel) {
                     window.bootstrap.Carousel.getOrCreateInstance(carouselEl);
-                } else {
-                    // bootstrap may be missing in a minimal bundle; log for debugging
+                } else {                   
                     console.warn("Bootstrap Carousel is not present on this page.");
                 }
             } catch (initErr) {

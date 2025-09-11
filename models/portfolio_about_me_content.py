@@ -23,7 +23,8 @@ class AboutMeContent(models.Model):
         if not record:
             record = self.create({})
         return record
-
+    
+    #Singleton create record, if one exist update instead of creating multiple
     @api.model_create_multi
     def create(self, vals_list):
         if len(vals_list) > 1:
@@ -33,8 +34,7 @@ class AboutMeContent(models.Model):
 
         vals = vals_list[0]
         existing = self.search([], limit=1)
-        if existing:
-            # Bevar eksisterende felter hvis de ikke er sat i vals
+        if existing:           
             keys_to_remove = [
                 key for key, value in vals.items()
                 if not value and value != 0

@@ -2,7 +2,7 @@ from odoo import fields, models
 class PortfolioRepositoryTag(models.Model):
     _name="portfolio.repository.tag"
     _description="repository tag"
-    name = fields.Char()
+    name = fields.Char(required=True)
     
     portfolio_repository_ids = fields.Many2many(
         "portfolio.repository",
@@ -11,3 +11,7 @@ class PortfolioRepositoryTag(models.Model):
         "repository_id",   # related model's column (repository)
         string="Repositories"
     )
+
+    #_sql_constraints = [
+    #    ('unique_tag_name', 'unique(name)', 'Tag name must be unique!'),
+    #]

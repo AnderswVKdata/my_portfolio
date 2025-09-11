@@ -9,7 +9,8 @@ class GitHubRepoWizard(models.TransientModel):
         github_service = self.env['portfolio.github.data.fetch']
         repo_data = github_service.fetch_repos(self.github_username)
 
-        for repo in repo_data:
+        #creates tag records for the repo
+        for repo in repo_data: 
             tag_ids = []
             for lang in repo['tags']:
                 tag = self.env['portfolio.repository.tag'].sudo().search([('name', '=', lang)], limit=1)
@@ -26,6 +27,7 @@ class GitHubRepoWizard(models.TransientModel):
                     'published': False,
                 })
             else:
+                #creates record using repo data
                 self.env['portfolio.repository'].sudo().create({
                     'name': repo['name'],
                     'url': repo['html_url'],

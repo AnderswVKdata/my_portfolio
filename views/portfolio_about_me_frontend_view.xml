@@ -2,7 +2,10 @@
 <odoo>
     <template id="aboutme_template" name="About Me Page">
         <t t-call="website.layout">
+
+            
             <style>
+                <!-- Background navbar styling-->
                 header#top {
                 position: absolute;
                 top: 0;
@@ -21,8 +24,22 @@
                 margin-top: 0 !important;
                 padding-top: 0 !important;
                 }
+                <!-- Titles styling-->
+                @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&amp;display=swap');
+
+                .fancy-title {
+                    font-family: 'Playfair Display', serif;
+                    font-style: italic;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: #000;
+                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                }
             </style>
+
             <div id="wrap" class="oe_structure oe_empty">
+
+                <!-- Information section-->
                 <section class="s_company_team pt120 o_colored_level pb0"
                     style="position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
                     <div class="o_we_shape o_web_editor_Origins_14_001" />
@@ -30,7 +47,7 @@
                     <div class="container">
                         <div class="row s_nb_column_fixed o_grid_mode" data-row-count="13">
 
-                            <!-- Description -->
+                            <!-- name + title -->
                             <div
                                 class="o_grid_item g-col-lg-12 o_colored_level g-height-3 col-lg-12"
                                 style="grid-area: 1 / 1 / 4 / 13; z-index: 1; ">
@@ -42,7 +59,6 @@
                                 </p>
                             </div>
 
-                            <!-- Image + Address -->
                             <div
                                 class="o_colored_level o_grid_item g-col-lg-12 g-height-9 col-lg-12"
                                 style="z-index: 2; grid-area: 5 / 1 / 14 / 13;">
@@ -57,11 +73,12 @@
                                         <p t-if="not aboutme.image">No image</p>
                                     </div>
 
-                                    <!-- Address + Map -->
+                                    <!-- description -->
                                     <div class="col-lg-9">
                                         <h5>About Me</h5>
                                         <p t-esc="aboutme.description" />
 
+                                        <!-- Address + embedded google maps -->
                                         <section class="s_map pt0 pb256"
                                             data-map-type="m"
                                             data-map-zoom="11"
@@ -82,66 +99,79 @@
                     </div>
                 </section>
 
+                <!-- Experience card section-->
                 <section class="s_cards_soft o_colored_level o_cc o_cc1  pb256"
                     data-snippet="s_cards_soft"
                     style="position: relative; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%); padding-top: 250px;">
 
+                    <!-- Define a 12-column CSS grid for the card layout -->
                     <style>
                         .s_cards_soft .row.s_nb_column_fixed.o_grid_mode {
-                            display: grid;
-                            grid-template-columns: repeat(12, 1fr);
-                            grid-auto-rows: min-content;
+                        display: grid;
+                        grid-template-columns: repeat(12, 1fr);
+                        grid-auto-rows: min-content;
                         }
                         .s_cards_soft .o_grid_item {
-                            position: relative !important;
+                        position: relative !important;
                         }
                     </style>
 
+                    <!-- Decorative background shape -->
                     <div class="o_we_shape o_web_editor_Origins_16"></div>
+
                     <div class="container">
+                        <!-- Grid container with 12 columns, rows dynamically sized -->
                         <div class="row s_nb_column_fixed o_grid_mode" data-row-count="9">
+                            <!-- Section title -->
                             <div class="o_grid_item g-col-lg-12 g-height-3 col-lg-12"
-                                style="grid-area: 1 / 1 / 4 / 13; z-index: 1;">
-                                <h2 style="text-align: center;">Experience</h2>
+                                    style="grid-area: 1 / 1 / 4 / 13; z-index: 1;">                                
+                                <h2 class="display-3-fs fancy-title" style="text-align: center; margin-top:0.1rem; margin-bottom:4rem;">
+                                    Experience
+                                </h2>
+                                
                                 <p class="lead" style="text-align: center;">
                                     <br />
                                 </p>
                             </div>
 
+                            <!-- Parameters to control how many cards per row and their size -->
                             <t t-set="cols_per_row" t-value="4" />    <!-- how many cards per row -->
-                            <t t-set="col_span" t-value="3" />        <!-- how many grid columns each card
-                            spans (3 -> 1,4,7,10) -->
-                            <t t-set="row_span" t-value="8" />        <!-- how many grid rows each card
-                            spans (matches g-height-8) -->
+                            <t t-set="col_span" t-value="3" />        <!-- how many grid columns each card -->
+                            <t t-set="row_span" t-value="8" />        <!-- how many grid rows each card -->
 
-                            <!-- dynamic loop: enumerate(cards) so we have index -->
+
+                            <!-- Dynamic loop: iterate over cards with index -->
                             <t t-foreach="enumerate(cards)" t-as="pair">
-                                <!-- pair[0] = index, pair[1] = card -->
-                                <t t-set="idx" t-value="pair[0]" />
-                                <t t-set="card" t-value="pair[1]" />
+                                <t t-set="idx" t-value="pair[0]" /> <!-- Index of card -->
+                                <t t-set="card" t-value="pair[1]" /> <!-- Card object -->
 
-                                <!-- compute start col, end col, start row, end row -->
+                                <!-- Calculate grid position (start/end column + row) -->
                                 <t t-set="col_start" t-value="1 + (idx % cols_per_row) * col_span" />
                                 <t t-set="col_end" t-value="col_start + col_span" />
                                 <t t-set="row_start" t-value="2 + (idx // cols_per_row) * row_span" />
                                 <t t-set="row_end" t-value="row_start + row_span" />
 
-                                <!-- output the grid item with dynamic grid-area inline -->
+                                <!-- Each card placed into the grid at calculated position -->
                                 <div class="o_grid_item g-col-lg-3 g-height-8 col-lg-3"
                                     t-att-style="'z-index: 0; grid-area: %s / %s / %s / %s;' % (row_start, col_start, row_end, col_end)">
+
+                                    <!-- Card content -->
                                     <div
                                         class="s_card card o_colored_level o_cc o_cc2 border shadow o_card_img_top"
                                         style="width: 280px;
-                   background-color: rgba(0, 0, 0, 0);
-                   background-image: linear-gradient(135deg, rgb(203, 94, 238) 0%, rgb(75, 225, 236) 100%);
-                   border-width: 0px !important;
-                   box-shadow: rgb(0, 0, 255) 0px 8px 16px 0px !important;">
+                                        background-color: rgba(0, 0, 0, 0);
+                                        background-image: linear-gradient(135deg, rgb(203, 94, 238) 0%, rgb(75, 225, 236) 100%);
+                                        border-width: 0px !important;
+                                        box-shadow: rgb(0, 0, 255) 0px 8px 16px 0px !important;">
+
+                                        <!-- Card image -->
                                         <figure class="o_card_img_wrapper ratio mb-0 ratio-4x3">
                                             <img class="o_card_img object-fit-cover card-img-top"
                                                 t-att-src="'/web/image/portfolio.about.me.experience.card/%s/image' % card.id"
                                                 alt="Experience Image" />
                                         </figure>
 
+                                        <!-- Card title + description + tags-->
                                         <div class="card-body">
                                             <h5 class="card-title">
                                                 <span style="font-size: 1rem;">
@@ -168,7 +198,7 @@
                     </div>
                 </section>
 
-
+                <!-- Partner section -->
                 <section class="s_references o_colored_level o_cc o_cc1 d-flex align-items-end"
                     style="min-height: 380px; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%); position: relative;"
                     data-snippet="s_references"
@@ -181,14 +211,14 @@
 
                         <!-- Partners title -->
                         <div class="row">
-                            <div class="col-12 text-center mb-4" style="padding-left: 80%;">
-                                <h5>
-                                    <span class="h1-fs">Partners</span>
-                                </h5>
+                            <div class="col-12 text-center mb-4">
+                                <h2 class="display-3-fs fancy-title" style="margin-top:1rem; margin-left:80%;">
+                                    Partners
+                                </h2>
                             </div>
                         </div>
 
-                        <!-- Logos -->
+                        <!-- Partner Logo-->
                         <div class="row justify-content-center pb-5">
                             <t t-foreach="logos" t-as="logo">
                                 <div class="col-lg-2 col-md-3 col-4 text-center mb-3">

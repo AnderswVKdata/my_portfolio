@@ -7,12 +7,12 @@ class GitHubRepo(models.AbstractModel):
     _name = 'portfolio.github.data.fetch'
     _description = 'GitHub Repo Fetch Service'
 
+    #gets github_user from wizard
     def fetch_repos(self, github_user):
         print("GitHub repo has been called")
         token = os.getenv("GITHUB_TOKEN")
         repo_api_url = f"https://api.github.com/users/{github_user}/repos"
         repos_data = []
-
         headers = {}
         if token:
             headers['Authorization'] = f'token {token}'
