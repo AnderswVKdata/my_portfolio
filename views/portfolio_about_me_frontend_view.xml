@@ -50,7 +50,7 @@
                             <!-- name + title -->
                             <div
                                 class="o_grid_item g-col-lg-12 o_colored_level g-height-3 col-lg-12"
-                                style="grid-area: 3 / 1 / 5 / 13; z-index: 1;">
+                                style="grid-area: 1 / 1 / 5 / 13; z-index: 1;">
                                 <h3 class="h1-fs m-0">
                                     <t t-esc="aboutme.name" />
                                 </h3>
@@ -61,7 +61,7 @@
 
                             <div
                                 class="o_colored_level o_grid_item g-col-lg-12 g-height-9 col-lg-12"
-                                style="z-index: 2; grid-area: 5 / 1 / 14 / 13;">
+                                style="z-index: 2; grid-area: 3 / 1 / 14 / 13;">
                                 <div class="row s_col_no_resize s_col_no_bgcolor">
 
                                     <!-- Image -->
