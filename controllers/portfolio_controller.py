@@ -1,8 +1,5 @@
 from odoo import http
 from odoo.http import request, Response
-import logging
-_logger = logging.getLogger(__name__)
-
 
 class CustomWebsiteController(http.Controller):
     
@@ -45,29 +42,21 @@ class CustomWebsiteController(http.Controller):
     
     @http.route('/contactme', type='http', auth='public', website=True)
     def contact_me_page(self, **kw):
-        # simple render that includes a marker so we can confirm source
         return request.render('my_portfolio.contact_me_page')
 
-    # Debug endpoint: logs post, creates record, and returns plain text (no redirect)
+
     @http.route('/contactme/submit', type='http', auth='public', methods=['POST'], website=True, csrf=False)
     def contact_me_submit(self, **post):
-        _logger.info("DEBUG: /contact-me/submit HIT, post=%s", post)
-        try:
-            vals = {
-                'name': post.get('name') or False,
-                'phone': post.get('phone') or False,
-                'email_from': post.get('email_from') or False,
-                'company': post.get('company') or False,
-                'subject': post.get('subject') or False,
-                'question': post.get('question') or False,
-            }
-            rec = request.env['portfolio.contact.me'].sudo().create(vals)
-            _logger.info("DEBUG: created portfolio.contact.me id=%s vals=%s", rec.id, vals)
-            # return plain text showing created id for easy testing
-            return Response("OK: created id=%s" % rec.id, status=200, mimetype='text/plain')
-        except Exception as e:
-            _logger.exception("DEBUG: create failed: %s", e)
-            return Response("ERROR: %s" % e, status=500, mimetype='text/plain')
+        vals = {
+            'name': post.get('name'),
+            'phone': post.get('phone'),
+            'email_from': post.get('email_from'),
+            'company': post.get('company'),
+            'subject': post.get('subject'),
+            'question': post.get('question'),
+        }
+        rec = request.env['portfolio.contact.me'].sudo().create(vals)
+        return Response("Thank you for contacting me!", status=200, mimetype='text/plain')
 
     
     #Fetches published repos
