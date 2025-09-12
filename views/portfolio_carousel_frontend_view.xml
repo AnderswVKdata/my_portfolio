@@ -1,11 +1,7 @@
 <odoo>
-  <!-- MAIN PAGE -->
   <template id="homepage_v2" name="Homepage_v2" t-name="my_portfolio.homepage_v2">
     <t t-call="website.layout">
       <t t-set="pageName" t-value="'homepage'" />
-      
-
-
       <div id="wrap" class="oe_structure oe_empty">
 
         <!-- Welcome title -->
@@ -20,7 +16,6 @@
                   style="text-align: center; margin-top:1rem;">
                   Welcome To My Portfolio
                 </h2>
-                
               </div>
             </div>
           </div>
@@ -28,41 +23,39 @@
 
         <!-- Filter tag buttons -->
         <section class="s_title o_colored_level pt0 pb0"
-  style="position: relative; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
-  <div class="s_allow_columns container" style="padding: 0.8rem 0;">
-    <div  
-         style="text-align: center; margin:0; padding:0; line-height:1;">
-      
-      <!-- "All" tag -->
-      <span class="filter-btn"
-        data-filter="all"
-        style="font-size: 0.85rem; cursor: pointer;
+          style="position: relative; background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
+          <div class="s_allow_columns container" style="padding: 0.8rem 0;">
+            <div
+              style="text-align: center; margin:0; padding:0; line-height:1;">
+
+              <!-- "All" tag -->
+              <span class="filter-btn"
+                data-filter="all"
+                style="font-size: 0.85rem; cursor: pointer;
                margin: 0.25rem; padding: 0.25rem 0.6rem;
                border-radius: 999px;
                background: rgba(0,0,0,0.75); color: #fff;
                box-shadow: 0 2px 5px rgba(0,0,0,0.25);
                vertical-align: middle;">
-        All
-      </span>
+                All
+              </span>
 
-      <!-- Dynamic tags -->
-      <t t-foreach="unique_tags" t-as="tag">
-        <span class="filter-btn"
-          t-att-data-filter="tag"
-          style="font-size: 0.85rem; cursor: pointer;
+              <!-- Dynamic tags -->
+              <t t-foreach="unique_tags" t-as="tag">
+                <span class="filter-btn"
+                  t-att-data-filter="tag"
+                  style="font-size: 0.85rem; cursor: pointer;
                  margin: 0.25rem; padding: 0.25rem 0.6rem;
                  border-radius: 999px;
                  background: rgba(255,255,255,0.2); color: #fff;
                  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
                  vertical-align: middle;">
-          <t t-esc="tag" />
-        </span>
-      </t>
-
-    </div>
-  </div>
-</section>
-
+                  <t t-esc="tag" />
+                </span>
+              </t>
+            </div>
+          </div>
+        </section>
 
         <!-- Carousel Wrapper -->
         <section id="carousel-wrapper">
@@ -132,7 +125,6 @@
                 <div class="o_grid_item col-lg-4 g-col-lg-4 g-height-2 o_colored_level"
                   style="z-index:5; grid-area:12/8/14/12;">
                 </div>
-
               </div>
             </div>
           </div>
@@ -147,7 +139,6 @@
                 t-att-class="'s_carousel_intro_item carousel-item px-0 o_colored_level o_cc o_cc1 pb112 pt0' + (' active' if visible_idx == 0 else '')"
                 t-att-data-tags="','.join(repo.get('tags', []))"
                 style="position: relative; background-color: rgba(0,0,0,0); background-image: linear-gradient(135deg, rgb(47,128,237) 0%, rgb(178,255,218) 100%);">
-
                 <div class="o_we_shape o_web_editor_Airy_05_001 o_we_animated"></div>
                 <div class="container">
                   <div class="row o_grid_mode" data-row-count="14">
@@ -199,7 +190,6 @@
                         </a>
                       </p>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -240,6 +230,7 @@
               <button type="button" data-bs-target="#myCarousel1756706871012" data-bs-slide-to="0"
                 class="active" aria-current="true"></button>
             </t>
+
             <!-- normal indicators when there are repos -->
             <t t-else="">
               <t t-set="ind_idx" t-value="0" />
@@ -256,11 +247,8 @@
               </t>
             </t>
           </div>
-
         </div>
       </div>
     </section>
   </template>
-
-
 </odoo>

@@ -1,5 +1,4 @@
 <odoo>
-
     <!-- Backend List View -->
     <record id="view_all_repos_list" model="ir.ui.view">
         <field name="name">portfolio.repository.list</field>
@@ -23,7 +22,6 @@
         <field name="target">new</field>
     </record>
 
-
     <!-- QWeb Template for Website -->
     <template id="publish_repo" name="Publish GitHub Repos" t-name="my_portfolio.publish_repo">
         <t t-call="website.layout">
@@ -42,5 +40,4 @@
             </div>
         </t>
     </template>
-
 </odoo>

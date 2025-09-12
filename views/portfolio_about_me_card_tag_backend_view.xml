@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="view_language_card_tag_list" model="ir.ui.view">
         <field name="name">portfolio.about.me.card.tag.list</field>
         <field name="model">portfolio.about.me.card.tag</field>
@@ -22,6 +21,4 @@
             </form>
         </field>
     </record>
-
-
 </odoo>

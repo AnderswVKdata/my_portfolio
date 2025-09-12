@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <template id="contact_me_page" name="Contact Me">
-
-
     <t t-call="website.layout">
       <div id="wrap" class="oe_structure">
         <section class="s_title_form o_colored_level o_cc o_cc2 pb384 pt176"
@@ -96,11 +94,8 @@
                     <div class="mb-0 py-2 col-12 text-end">
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-
                   </div>
                 </form>
-
-
               </div>
             </section>
           </div>
