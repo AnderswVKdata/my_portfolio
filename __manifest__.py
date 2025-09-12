@@ -11,7 +11,9 @@
     'assets': {
         'web.assets_frontend': [
             'my_portfolio/static/src/js/carousel_out_of_bound_fix.js',
-            'my_portfolio/static/src/js/carousel_tag_filter.js',            
+            'my_portfolio/static/src/js/carousel_tag_filter.js', 
+            'my_portfolio/static/src/js/contact_me_submit_alert.js',
+            'my_portfolio/static/src/scss/custom.scss',           
         ],
     },
     'data': [
@@ -21,8 +23,10 @@
         'views/portfolio_about_me_partner_logo_view.xml',
         'views/portfolio_experience_card_backend_view.xml',
         'views/portfolio_about_me_card_tag_backend_view.xml',
-        'views/portfolio_menu.xml',
-        'views/portfolio_carousel_view.xml',
+        'views/portfolio_contact_me_backend_view.xml',
+        'views/portfolio_contact_me_frontend_view.xml',
+        'views/portfolio_menu_view.xml',
+        'views/portfolio_carousel_frontend_view.xml',
         'views/portfolio_publish_repo_view.xml', 
         'views/portfolio_about_me_frontend_view.xml',       
     ],  

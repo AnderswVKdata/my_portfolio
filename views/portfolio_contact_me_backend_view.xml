@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_contact_me_list" model="ir.ui.view">
+        <field name="name">portfolio.contact.me.list</field>
+        <field name="model">portfolio.contact.me</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email_from"/>
+                <field name="company"/>
+                <field name="subject"/>
+                <field name="question"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_contact_me_form" model="ir.ui.view">
+        <field name="name">portfolio.contact.me.form</field>
+        <field name="model">portfolio.contact.me</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email_from"/>
+                    <field name="company"/>
+                    <field name="subject"/>
+                    <field name="question"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -57,6 +57,22 @@
         <field name="target">current</field>
     </record>
 
+    <!-- Action: Show contact me messages-->
+    <record id="contact_me_message" model="ir.actions.act_window">
+        <field name="name">Emails</field>
+        <field name="res_model">portfolio.contact.me</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_contact_me_list"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Menu to messages-->
+    <menuitem id="menu_contact_me_message"
+              name="Emails"
+              parent="menu_my_portfolio_root"
+              action="contact_me_message"
+              sequence="1"/>
+
     <!-- Menu to experience card-->
     <menuitem id="menu_experience_card"
               name="Experience Card"

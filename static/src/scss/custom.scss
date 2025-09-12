@@ -1,0 +1,29 @@
+/* Background styling for navbar */
+header#top {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent !important;
+  border: none !important;
+}
+
+body, #wrapwrap {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.s_title:first-of-type {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Styling for title text */
+.fancy-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #000;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+}

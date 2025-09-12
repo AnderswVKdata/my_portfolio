@@ -6,3 +6,4 @@ access_portfolio_about_me_content,access.portfolio.about.me.content,model_portfo
 access_portfolio_about_me_partner_logo,access.portfolio.about.me.partner.logo,model_portfolio_about_me_partner_logo,base.group_user,1,1,1,1
 access_portfolio_about_me_experience_card,access.portfolio.about.me.experience.card,model_portfolio_about_me_experience_card,base.group_user,1,1,1,1
 access_portfolio_about_me_card_tag,access.portfolio.about.me.card.tag,model_portfolio_about_me_card_tag,base.group_user,1,1,1,1
+access_portfolio_contact_me,access.portfolio.contact.me,model_portfolio_contact_me,base.group_user,1,1,1,1
