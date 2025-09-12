@@ -43,7 +43,7 @@
 
                                     <!-- description -->
                                     <div class="col-lg-9">
-                                        <h5 class="fancy-title">About Me</h5>
+                                        <h5 class="fancy-title" style="font-size: 36px;">About Me</h5>
                                         <p t-esc="aboutme.description" />
 
                                         <!-- Address + embedded google maps -->
