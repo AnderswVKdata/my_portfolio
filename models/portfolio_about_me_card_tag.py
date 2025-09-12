@@ -6,7 +6,7 @@ class CardTag(models.Model):
 
     name = fields.Char(string="Name", required=True)
 
-    # Ensures unique card tags in database, comment out as i dont know if works
-    #_sql_constraints = [
-    #    ('unique_tag_name', 'unique(name)', 'Tag name must be unique!'),
-    #]
+    # Ensures unique card tags in database
+    _sql_constraints = [
+        ('unique_tag_name', 'UNIQUE(name)', 'Tag name must be unique!'),
+    ]

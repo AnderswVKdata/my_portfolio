@@ -1,0 +1,15 @@
+<odoo>
+  <!-- ir cron for automatic check-->
+  <record id="ir_cron_unpublish_expired" model="ir.cron">
+    <field name="name">Unpublish expired repositories</field>
+    <field name="model_id" ref="model_portfolio_repository"/>
+    <field name="state">code</field>
+    <field name="code">portfolio_repository.unpublish_expired_repo()</field>
+
+    <!-- Run once a day at midnight -->
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+
+    <field name="active" eval="True"/>
+  </record>
+</odoo>

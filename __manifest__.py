@@ -28,6 +28,7 @@
         'views/portfolio_menu_view.xml',
         'views/portfolio_carousel_frontend_view.xml',
         'views/portfolio_publish_repo_view.xml', 
-        'views/portfolio_about_me_frontend_view.xml',       
+        'views/portfolio_about_me_frontend_view.xml',   
+        'data/unpublish_expired_repos.xml'    
     ],  
 }
