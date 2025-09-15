@@ -49,15 +49,51 @@ class CustomWebsiteController(http.Controller):
 
     @http.route('/contactme/submit', type='http', auth='public', methods=['POST'], website=True, csrf=False)
     def contact_me_submit(self, **post):
+        # Extract variables from post
+        name = post.get('name')
+        phone = post.get('phone')
+        email_from = post.get('email_from')
+        company = post.get('company')
+        subject = post.get('subject')
+        question = post.get('question')
+
+        # Prepare values for model
         vals = {
-            'name': post.get('name'),
-            'phone': post.get('phone'),
-            'email_from': post.get('email_from'),
-            'company': post.get('company'),
-            'subject': post.get('subject'),
-            'question': post.get('question'),
+            'name': name,
+            'phone': phone,
+            'email_from': email_from,
+            'company': company,
+            'subject': subject,
+            'question': question,
         }
-        rec = request.env['portfolio.contact.me'].sudo().create(vals)
+
+        email_to = 'andersw@vkdata.dk'  
+
+        # Email body
+        body_html = f"""
+        <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
+            <h2 style="color: #2f80ed;">New Contact Form Submission</h2>
+            <p><strong>Name:</strong> {name}</p>
+            <p><strong>Email:</strong> {email_from}</p>
+            <p><strong>Phone:</strong> {phone}</p>
+            <p><strong>Company:</strong> {company}</p>
+            <p><strong>Subject:</strong> {subject}</p>
+            <p><strong>Question:</strong><br>{question}</p>
+        </div>
+        """
+
+        # Send email
+        mail_values = {
+            'subject': f'Contact Form: {subject}',
+            'body_html': body_html,
+            'email_from': email_from,
+            'email_to': email_to,
+        }
+        request.env['mail.mail'].sudo().create(mail_values).send()
+
+        # Save record in your model
+        request.env['portfolio.contact.me'].sudo().create(vals)
+
         return Response("Thank you for contacting me!", status=200, mimetype='text/plain')
 
     
