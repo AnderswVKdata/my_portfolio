@@ -3,29 +3,34 @@
   <template id="contact_me_page" name="Contact Me">
     <t t-call="website.layout">
       <div id="wrap" class="oe_structure">
-        <section class="s_title_form o_colored_level o_cc o_cc2 pb384 pt176"
-          data-name="Title - Form"
-          style="background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);">
+        <section class="s_title_form o_colored_level o_cc o_cc2 pb256 pt176"
+          style="background-color: rgba(0,0,0,0); position: relative; background-image: linear-gradient(135deg, rgb(47, 128, 237) 0%, rgb(178, 255, 218) 100%);"
+          data-oe-shape-data='{"shape":"web_editor/Bold/06_001","flip":[],"showOnMobile":false,"shapeAnimationSpeed":"0"}'>
+          <div class="o_we_shape o_web_editor_Bold_06_001"></div>
           <div class="o_container_small">
-            <h2 class="text-center fancy-title" >
+            <h2 class="text-center fancy-title">
               <span style="font-size: 4rem;">Contact Me</span>
             </h2>
-            <p class="text-center lead"><br/></p>
+            <p class="text-center lead">
+              <br />
+            </p>
 
             <!-- Contact Form -->
             <section class="pt16 pb16" data-name="Form">
               <div class="container-fluid">
-                <form id="contact-form" action="/contactme/submit" method="post" class="o_mark_required">
+                <form id="contact-form" action="/contactme/submit" method="post"
+                  class="o_mark_required">
                   <div class="row s_col_no_bgcolor">
 
                     <!-- Your Name -->
                     <div class="mb-3 col-12">
                       <div class="row">
-                        <label class="col-form-label col-sm-auto" style="width: 200px" for="field_name">
-                          Your Name <span class="text-danger">*</span>
+                        <label class="col-form-label col-sm-auto" style="width: 200px"
+                          for="field_name"> Your Name <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm">
-                          <input class="form-control" type="text" name="name" required="required" id="field_name"/>
+                          <input class="form-control" type="text" name="name" required="required"
+                            id="field_name" />
                         </div>
                       </div>
                     </div>
@@ -33,11 +38,12 @@
                     <!-- Phone Number -->
                     <div class="mb-3 col-12">
                       <div class="row">
-                        <label class="col-form-label col-sm-auto" style="width: 200px" for="field_phone">
+                        <label class="col-form-label col-sm-auto" style="width: 200px"
+                          for="field_phone">
                           Phone Number
                         </label>
                         <div class="col-sm">
-                          <input class="form-control" type="tel" name="phone" id="field_phone"/>
+                          <input class="form-control" type="tel" name="phone" id="field_phone" />
                         </div>
                       </div>
                     </div>
@@ -45,11 +51,12 @@
                     <!-- Your Email -->
                     <div class="mb-3 col-12">
                       <div class="row">
-                        <label class="col-form-label col-sm-auto" style="width: 200px" for="field_email">
-                          Your Email <span class="text-danger">*</span>
+                        <label class="col-form-label col-sm-auto" style="width: 200px"
+                          for="field_email"> Your Email <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm">
-                          <input class="form-control" type="email" name="email_from" required="required" id="field_email"/>
+                          <input class="form-control" type="email" name="email_from"
+                            required="required" id="field_email" />
                         </div>
                       </div>
                     </div>
@@ -57,11 +64,12 @@
                     <!-- Your Company -->
                     <div class="mb-3 col-12">
                       <div class="row">
-                        <label class="col-form-label col-sm-auto" style="width: 200px" for="field_company">
+                        <label class="col-form-label col-sm-auto" style="width: 200px"
+                          for="field_company">
                           Your Company
                         </label>
                         <div class="col-sm">
-                          <input class="form-control" type="text" name="company" id="field_company"/>
+                          <input class="form-control" type="text" name="company" id="field_company" />
                         </div>
                       </div>
                     </div>
@@ -69,11 +77,12 @@
                     <!-- Subject -->
                     <div class="mb-3 col-12">
                       <div class="row">
-                        <label class="col-form-label col-sm-auto" style="width: 200px" for="field_subject">
-                          Subject <span class="text-danger">*</span>
+                        <label class="col-form-label col-sm-auto" style="width: 200px"
+                          for="field_subject"> Subject <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm">
-                          <input class="form-control" type="text" name="subject" required="required" id="field_subject"/>
+                          <input class="form-control" type="text" name="subject" required="required"
+                            id="field_subject" />
                         </div>
                       </div>
                     </div>
@@ -81,11 +90,12 @@
                     <!-- Your Question -->
                     <div class="mb-3 col-12">
                       <div class="row">
-                        <label class="col-form-label col-sm-auto" style="width: 200px" for="field_question">
-                          Your Question <span class="text-danger">*</span>
+                        <label class="col-form-label col-sm-auto" style="width: 200px"
+                          for="field_question"> Your Question <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm">
-                          <textarea class="form-control" name="question" required="required" id="field_question" rows="3"></textarea>
+                          <textarea class="form-control" name="question" required="required"
+                            id="field_question" rows="3"></textarea>
                         </div>
                       </div>
                     </div>
