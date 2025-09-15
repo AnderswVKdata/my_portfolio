@@ -17,29 +17,23 @@ publicWidget.registry.CarouselTagFilter = publicWidget.Widget.extend({
 
         if (filter === "all") {
             this.activeFilters.clear();
-            buttons.forEach(b => {
-                b.classList.remove("bg-primary");
-                b.classList.add("bg-secondary");
-            });
-            btn.classList.remove("bg-secondary");
-            btn.classList.add("bg-primary");
+            buttons.forEach(b => b.classList.remove("active-filter"));
+            btn.classList.add("active-filter");
         } else {
             if (this.activeFilters.has(filter)) {
                 this.activeFilters.delete(filter);
-                btn.classList.remove("bg-primary");
-                btn.classList.add("bg-secondary");
+                btn.classList.remove("active-filter");
             } else {
                 this.activeFilters.add(filter);
-                btn.classList.remove("bg-secondary");
-                btn.classList.add("bg-primary");
+                btn.classList.add("active-filter");
             }
 
+            // make sure "all" gets un-highlighted
             const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
             if (allBtn) {
-                allBtn.classList.remove("bg-primary");
-                allBtn.classList.add("bg-secondary");
+                allBtn.classList.remove("active-filter");
             }
-        }
+        }   
 
         this._applyFilter();
     },

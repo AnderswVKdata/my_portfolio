@@ -27,3 +27,9 @@ body, #wrapwrap {
   color: #000;
   text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
 }
+
+/* filter icon on click highlight */
+.filter-btn.active-filter {
+  background: rgba(39, 94, 211, 0.85) !important;
+  color: #fff !important;
+}

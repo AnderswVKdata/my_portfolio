@@ -22,7 +22,7 @@ class PortfolioRepository(models.Model):
 
     
     #ensures that end_date is in the future on creation
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         """Apply same check on create"""
         record = super().create(vals)
