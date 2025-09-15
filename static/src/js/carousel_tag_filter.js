@@ -6,6 +6,8 @@ import { rpc } from "@web/core/network/rpc";
 publicWidget.registry.CarouselTagFilter = publicWidget.Widget.extend({
     selector: ".filter-btn",
     events: { "click": "_onClickFilter" },
+
+    //set of filter tags
     activeFilters: new Set(),
 
     _onClickFilter(ev) {
@@ -43,9 +45,11 @@ publicWidget.registry.CarouselTagFilter = publicWidget.Widget.extend({
     },
 
     async _applyFilter() {
+        //list of filters
         const filters = [...this.activeFilters];
 
         try {
+            //sends list of filters to route
             const html = await rpc("/portfolio/filter", { tags: filters });
             const wrapper = document.querySelector("#carousel-wrapper");
             if (!wrapper) {
@@ -53,6 +57,7 @@ publicWidget.registry.CarouselTagFilter = publicWidget.Widget.extend({
                 return;
             }
 
+            //replace content with new carousel
             wrapper.innerHTML = html;
 
             // locate carousel element inside wrapper
@@ -63,6 +68,7 @@ publicWidget.registry.CarouselTagFilter = publicWidget.Widget.extend({
             }
 
             // ensure carousel has an id; if not, create one and update any data-bs-target attributes inside wrapper
+            // needs id so indicators and controls know what to point to
             if (!carouselEl.id) {
                 const generatedId = "carousel_" + Math.floor(Math.random() * 1000000);
                 carouselEl.id = generatedId;

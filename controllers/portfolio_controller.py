@@ -12,7 +12,9 @@ class CustomWebsiteController(http.Controller):
         })
 
     # AJAX filter route (returns only the carousel inner template)
+    #js sends list of tags to route as json
     @http.route('/portfolio/filter', type='json', auth="public", website=True)
+    #tags are from the json payload
     def filter_repos(self, tags=None, **kw):
         repo_list, _ = self._get_repos_and_tags()
 

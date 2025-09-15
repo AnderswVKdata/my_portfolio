@@ -1,4 +1,5 @@
-from odoo import fields, models
+from datetime import date
+from odoo import fields, models, api
 
 class PortfolioRepository(models.Model):
     _name="portfolio.repository"
@@ -21,6 +22,7 @@ class PortfolioRepository(models.Model):
 
     
     #ensures that end_date is in the future on creation
+    @api.model
     def create(self, vals):
         """Apply same check on create"""
         record = super().create(vals)
