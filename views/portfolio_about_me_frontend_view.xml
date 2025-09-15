@@ -36,7 +36,7 @@
 
                             <!-- Description -->
                             <div class="o_colored_level o_grid_item g-col-lg-6 col-lg-6"
-                                style="z-index: 2; grid-area: 9 / 1 / 12 / 6;">
+                                style="z-index: 2; grid-area: 9 / 1 / 12 / 8;">
                                 <div class="row s_col_no_resize s_col_no_bgcolor">
                                     <h5 class="fancy-title text-left" style="font-size: 36px;">About
                                         Me</h5>

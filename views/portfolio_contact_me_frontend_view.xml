@@ -99,6 +99,7 @@
                         </div>
                       </div>
                     </div>
+                    <p style="margin-left: 200px;">(*) fields are required</p>
 
                     <!-- Submit Button -->
                     <div class="mb-0 py-2 col-12 text-end">
