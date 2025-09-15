@@ -68,7 +68,6 @@ class CustomWebsiteController(http.Controller):
         }
 
         email_to = 'andersw@vkdata.dk'  
-
         # Email body
         body_html = f"""
         <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
@@ -81,7 +80,6 @@ class CustomWebsiteController(http.Controller):
             <p><strong>Question:</strong><br>{question}</p>
         </div>
         """
-
         # Send email
         mail_values = {
             'subject': f'Contact Form: {subject}',
@@ -90,6 +88,23 @@ class CustomWebsiteController(http.Controller):
             'email_to': email_to,
         }
         request.env['mail.mail'].sudo().create(mail_values).send()
+
+           # Email 2: Auto-reply to the user
+        body_html_auto_reply = f"""
+        <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
+            <h2 style="color: #2f80ed;">Thank You for Contacting Me</h2>
+            <p>Hi {name},</p>
+            <p>Thank you for reaching out! I have received your message and will get back to you shortly.</p>
+            <p>Best regards,<br>Your Name / Company</p>
+        </div>
+        """
+
+        request.env['mail.mail'].sudo().create({
+            'subject': 'Thank you for contacting me',
+            'body_html': body_html_auto_reply,
+            'email_from': email_to,  
+            'email_to': email_from,  
+        }).send()
 
         # Save record in your model
         request.env['portfolio.contact.me'].sudo().create(vals)
