@@ -94,8 +94,6 @@
               action="action_partner_logo"
               sequence="1"/>
 
-
-
     <!-- Menu to Open the About Me View -->
     <menuitem id="menu_about_me_action"
               name="About Me"

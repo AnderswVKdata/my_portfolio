@@ -19,8 +19,6 @@ class PortfolioRepository(models.Model):
         string="Repository Tags"
     )
     
-
-    
     #ensures that end_date is in the future on creation
     @api.model_create_multi
     def create(self, vals):
@@ -33,5 +31,5 @@ class PortfolioRepository(models.Model):
     #unpublish records where end date has passed
     def unpublish_expired_repo(self):
         today = date.today()
-        expired = self.search([('published', '=', True), ('end_date', '<', today)])
+        expired = self.search([('published', '=', True), ('end_date', '<=', today)])
         expired.write({'published': False})
