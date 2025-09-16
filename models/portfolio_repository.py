@@ -30,6 +30,11 @@ class PortfolioRepository(models.Model):
     
     #unpublish records where end date has passed
     def unpublish_expired_repo(self):
+        print("CRON JOB IS RUNNING")
+        print("CRON JOB IS RUNNING")
+        print("CRON JOB IS RUNNING")
+        print("CRON JOB IS RUNNING")
+        print("CRON JOB IS RUNNING")
         today = date.today()
         expired = self.search([('published', '=', True), ('end_date', '<=', today)])
         expired.write({'published': False})

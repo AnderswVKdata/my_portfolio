@@ -16,14 +16,7 @@ class AboutMeContent(models.Model):
         string="Partner Logos"
     )
 
-    @api.model
-    def get_record(self):
-        """Always return the single record (create it if missing)."""
-        record = self.search([], limit=1)
-        if not record:
-            record = self.create({})
-        return record
-    
+
     #Singleton create record, if one exist update instead of creating multiple
     @api.model_create_multi
     def create(self, vals_list):

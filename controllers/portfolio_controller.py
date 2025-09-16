@@ -33,9 +33,10 @@ class CustomWebsiteController(http.Controller):
   
     @http.route('/aboutme', type='http', auth="public", website=True)
     def aboutme(self, **kw):
-        info = request.env['portfolio.about.me.content'].sudo().get_record()
-        partner_logo = request.env['portfolio.about.me.partner.logo'].sudo().get_record()
-        experience_card = request.env['portfolio.about.me.experience.card'].sudo().get_record()
+        
+        info = request.env['portfolio.about.me.content'].sudo().search([]) 
+        partner_logo = request.env['portfolio.about.me.partner.logo'].sudo().search([]) 
+        experience_card = request.env['portfolio.about.me.experience.card'].search([]) 
         return request.render("my_portfolio.aboutme_template", {
             'aboutme': info,
             'logos': partner_logo,

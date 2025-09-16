@@ -16,10 +16,6 @@ class ExperienceCard(models.Model):
         string="Language Card Tags"
     )
 
-    @api.model
-    def get_record(self):
-        record = self.search([])
-        return record
 
 
     

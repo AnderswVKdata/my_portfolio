@@ -13,7 +13,3 @@ class MyPartnerLogo(models.Model):
         ondelete="cascade"
     )
 
-    @api.model
-    def get_record(self):
-        record = self.search([])
-        return record
